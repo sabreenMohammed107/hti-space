@@ -96,38 +96,30 @@
                         </div>
 
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{ route('stage.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Testimonials </span>
+                                <span class="menu-title">Stages </span>
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{ route('post-type.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Cities</span>
+                                <span class="menu-title">Subjects</span>
                             </a>
                         </div>
                            <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{ route('post-type.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Tags</span>
+                                <span class="menu-title">Posts Type</span>
                             </a>
                         </div>
 
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title"> Features</span>
-                            </a>
-                        </div>
 
 
 
@@ -147,7 +139,7 @@
                         <span class="menu-bullet">
                             <span class="bullet bullet-dot"></span>
                         </span>
-                        <span class="menu-title">Home Page</span>
+                        <span class="menu-title">Professors</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion">
@@ -156,7 +148,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Explore City</span>
+                                <span class="menu-title">Professor List</span>
                             </a>
                         </div>
 
@@ -165,7 +157,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Offers</span>
+                                <span class="menu-title">professor subjects</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -173,7 +165,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Best Hotels</span>
+                                <span class="menu-title">Subject materials</span>
                             </a>
                         </div>
 
@@ -182,18 +174,11 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Counter</span>
+                                <span class="menu-title">Subject Assignment</span>
                             </a>
                         </div>
 
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">About Us</span>
-                            </a>
-                        </div>
+
 
 
                     </div>
@@ -206,7 +191,7 @@
                         <span class="menu-bullet">
                             <span class="bullet bullet-dot"></span>
                         </span>
-                        <span class="menu-title">Tours</span>
+                        <span class="menu-title">Students</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion">
@@ -215,7 +200,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Tours List</span>
+                                <span class="menu-title">Student List</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -223,7 +208,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Add Tour</span>
+                                <span class="menu-title">Student Subject</span>
                             </a>
                         </div>
 
@@ -233,12 +218,26 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Tour Gallery</span>
+                                <span class="menu-title">Student Assignment </span>
                             </a>
                         </div>
 
-
-
+                        <div class="menu-item">
+                            <a class="menu-link" href="#">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Student Solution </span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="#">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Student Comment </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- end Event -->
@@ -249,7 +248,7 @@
                         <span class="menu-bullet">
                             <span class="bullet bullet-dot"></span>
                         </span>
-                        <span class="menu-title">Hotels</span>
+                        <span class="menu-title">Posts</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion">
@@ -258,7 +257,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Hotels list</span>
+                                <span class="menu-title">Posts list</span>
                             </a>
                         </div>
 
@@ -267,37 +266,16 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Add Hotel</span>
+                                <span class="menu-title">Add Post</span>
                             </a>
                         </div>
 
                         {{-- new --}}
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Hotel Gallery</span>
-                            </a>
-                        </div>
 
 
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Room Types</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Hotel Pricing</span>
-                            </a>
-                        </div>
+
+
+
 
 
 
@@ -305,155 +283,11 @@
                     </div>
                 </div>
                 <!-- end Event -->
-                 <!-- start transportation -->
-                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <span class="menu-link">
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <span class="menu-title">Transfer </span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <div class="menu-sub menu-sub-accordion">
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Transfer  list</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Car Navigate</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Car Models</span>
-                            </a>
-                        </div>
-
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Tranfser Locations</span>
-                            </a>
-                        </div>
 
 
 
-                    </div>
-                </div>
-                <!-- end transportation -->
-                <!-- start Visa -->
-  <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-    <span class="menu-link">
-        <span class="menu-bullet">
-            <span class="bullet bullet-dot"></span>
-        </span>
-        <span class="menu-title">Visa</span>
-        <span class="menu-arrow"></span>
-    </span>
-
-    <div class="menu-sub menu-sub-accordion">
-        <div class="menu-item">
-            <a class="menu-link" href="#">
-                <span class="menu-bullet">
-                    <span class="bullet bullet-dot"></span>
-                </span>
-                <span class="menu-title">Nationalities</span>
-            </a>
-        </div>
-        <div class="menu-item">
-            <a class="menu-link" href="#">
-                <span class="menu-bullet">
-                    <span class="bullet bullet-dot"></span>
-                </span>
-                <span class="menu-title">Visa Type</span>
-            </a>
-        </div>
-        <div class="menu-item">
-            <a class="menu-link" href="#">
-                <span class="menu-bullet">
-                    <span class="bullet bullet-dot"></span>
-                </span>
-                <span class="menu-title">Country List</span>
-            </a>
-        </div>
-
-        <div class="menu-item">
-            <a class="menu-link" href="#">
-                <span class="menu-bullet">
-                    <span class="bullet bullet-dot"></span>
-                </span>
-                <span class="menu-title">Visa list</span>
-            </a>
-        </div>
-
-        <div class="menu-item">
-            <a class="menu-link" href="#">
-                <span class="menu-bullet">
-                    <span class="bullet bullet-dot"></span>
-                </span>
-                <span class="menu-title">Add Visa</span>
-            </a>
-        </div>
 
 
-    </div>
-</div>
-<!-- end Visa -->
-
-
-
-                 <!-- start user data -->
-                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <span class="menu-link">
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <span class="menu-title">User Data</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <div class="menu-sub menu-sub-accordion">
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Site Users list</span>
-                            </a>
-                        </div>
-
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Order Data</span>
-                            </a>
-                        </div>
-
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Favourties Hotels</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end user data -->
 
                 <div class="menu-item">
                     <a class="menu-link" href="#">

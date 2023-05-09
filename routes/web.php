@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostTypeController;
+use App\Http\Controllers\StageController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,9 +38,14 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:admin'])->group(function () {
+Route::group(['middleware' => ['auth', 'user-access:admin'], 'prefix' => 'admin'], function () {
+// Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
-    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+    Route::get('/home', [HomeController::class, 'adminHome'])->name('home');
+
+    Route::resource('stage', StageController::class);
+    Route::resource('subject', SubjectController::class);
+    Route::resource('post-type', PostTypeController::class);
 });
 
 /*------------------------------------------
