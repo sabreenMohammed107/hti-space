@@ -7,9 +7,9 @@
     <div class="aside-logo flex-column-auto pt-9 pb-5" id="kt_aside_logo">
         <!--begin::Logo-->
         <a href="#">
-            <img alt="Logo" src="{{ asset('website_assets/assets/img/logo.png') }}" class="max-h-50px logo-default "
+            <img alt="Logo" src="{{ asset('img/logo.png') }}" class="max-h-50px logo-default "
                 style="height: 120px" />
-            <img alt="Logo" src="{{ asset('website_assets/assets/img/logo.png') }}" class="max-h-50px logo-minimize "
+            <img alt="Logo" src="{{ asset('img/logo.png') }}" class="max-h-50px logo-minimize "
                 style="height: 120px" />
         </a>
         <!--end::Logo-->
@@ -81,21 +81,21 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <?php
-                            $company = App\Models\Company::first();
+                             <?php
+                            // $company = App\Models\Company::first();
                             ?>
 
-                            @if ($company)
+                           {{-- @if ($company)
                                 <a class="menu-link" href="{{ route('company.edit', $company->id) }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
                                     <span class="menu-title">Company</span>
                                 </a>
-                            @endif
+                            @endif --}}
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('testimonial.index') }}">
+                            <a class="menu-link" href="#">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
