@@ -45,7 +45,7 @@ All Admin Routes List
 Route::group(['middleware' => ['auth', 'user-access:admin'], 'prefix' => 'admin'], function () {
 // Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
-    Route::get('/home', [HomeController::class, 'adminHome'])->name('home');
+    Route::get('/home', [HomeController::class, 'adminHome'])->name('admin.home');
 
     Route::resource('stage', StageController::class);
     Route::resource('subject', SubjectController::class);
