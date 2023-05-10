@@ -230,23 +230,23 @@ var KTAppEcommerceSaveCategory = function () {
                         setTimeout(function () {
                             submitButton.removeAttribute('data-kt-indicator');
 
-                            Swal.fire({
-                                text: "Form has been successfully submitted!",
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                }
-                            }).then(function (result) {
-                                if (result.isConfirmed) {
-                                    // Enable submit button after loading
-                                    submitButton.disabled = false;
+                            // Swal.fire({
+                            //     text: "Form has been successfully submitted!",
+                            //     icon: "success",
+                            //     buttonsStyling: false,
+                            //     confirmButtonText: "Ok, got it!",
+                            //     customClass: {
+                            //         confirmButton: "btn btn-primary"
+                            //     }
+                            // }).then(function (result) {
+                            //     if (result.isConfirmed) {
+                            //         // Enable submit button after loading
+                            //         submitButton.disabled = false;
 
-                                    // Redirect to customers list page
-                                    window.location = form.getAttribute("data-kt-redirect");
-                                }
-                            });
+                            //         // Redirect to customers list page
+                            //         window.location = form.getAttribute("data-kt-redirect");
+                            //     }
+                            // });
                         }, 2000);
                     } else {
                         Swal.fire({
