@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostTypeController;
 use App\Http\Controllers\ProfessorsController;
 use App\Http\Controllers\ProfessorSubjectsController;
 use App\Http\Controllers\StageController;
+use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\StudentSolutionsController;
+use App\Http\Controllers\StudentSubjectsController;
 use App\Http\Controllers\SubjectAssignmentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SubjectMaterialsController;
@@ -46,14 +50,20 @@ Route::group(['middleware' => ['auth', 'user-access:admin'], 'prefix' => 'admin'
 // Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'adminHome'])->name('admin.home');
-
+//general data
     Route::resource('stage', StageController::class);
     Route::resource('subject', SubjectController::class);
     Route::resource('post-type', PostTypeController::class);
+// prof data
     Route::resource('professors', ProfessorsController::class);
     Route::resource('professor-subjects', ProfessorSubjectsController::class);
     Route::resource('subject-materials', SubjectMaterialsController::class);
     Route::resource('subject-assignment', SubjectAssignmentController::class);
+    //student data
+    Route::resource('students', StudentsController::class);
+    Route::resource('student-subjects', StudentSubjectsController::class);
+    Route::resource('student-solutions', StudentSolutionsController::class);
+    Route::resource('posts', PostsController::class);
 });
 
 /*------------------------------------------

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('file_path', 250)->nullable();
             $table->unsignedBigInteger('professor_id')->nullable();
             $table->date('upload_date')->nullable();
-            $table->integer('file_type_id')->default(1);
+            $table->string('file_type_id', 250)->nullable();
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('subject_id')->nullable();
             $table->timestamps();

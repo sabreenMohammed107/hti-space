@@ -21,4 +21,13 @@ class Professor extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+
+    /**
+     * The subjects that belong to the professor.
+     */
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class, 'professor_subjects');
+    }
 }
