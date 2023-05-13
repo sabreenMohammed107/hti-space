@@ -7,8 +7,9 @@ use App\Models\Professor_subject;
 use App\Models\Subject;
 use App\Models\Subject_material;
 use Carbon\Carbon;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-
+use File
 class SubjectMaterialsController extends Controller
 {
     protected $object;
@@ -116,7 +117,22 @@ class SubjectMaterialsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $row=Subject_material::where('id',$id)->first();
+        // Delete File ..
+        $file = $row->file_attach;
+        $file_name = public_path('uploads/subject_materials/' . $file);
+        try {
+            File::delete($file_name);
+
+
+           $row->delete();
+           return redirect()->back()->with('flash_del', 'Successfully Delete!');
+
+       } catch (QueryException $q) {
+           // return redirect()->back()->withInput()->with('flash_danger', $q->getMessage());
+           return redirect()->back()->withInput()->with('flash_danger', 'Can’t delete This Row
+           Because it related with another table');
+       }
     }
 
 

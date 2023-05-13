@@ -132,7 +132,7 @@ class MaterialSubjectOfProfController extends Controller
         $row=Subject_material::where('id',$id)->first();
         // Delete File ..
         $file = $row->file_attach;
-        $file_name = public_path('uploads/subject_assignments/' . $file);
+        $file_name = public_path('uploads/subject_materials/' . $file);
         try {
             File::delete($file_name);
 

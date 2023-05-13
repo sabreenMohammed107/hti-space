@@ -62,6 +62,19 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif --}}
+
+
+                            </div>
+                            <div class="col-md-8 offset-md-2">
+                            @if(Session::has('error'))
+
+                            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                <strong>Error ! </strong> Email-Address Or Password Are Wrong.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                           @endif
                             </div>
                         </div>
                     </form>

@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -44,11 +45,21 @@ class LoginController extends Controller
     {
         $input = $request->all();
 
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'email' => 'required|email',
+        //     'password' => 'required',
+        // ]);
+        $validator =  Validator::make($input, [
 
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+        if ($validator->fails()) {
+
+            return redirect()->back()->withInput()
+                ->withErrors($validator->messages());
+
+        }
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
             if (auth()->user()->type == 'admin') {
@@ -59,6 +70,9 @@ class LoginController extends Controller
                 return redirect()->route('login');
             }
         }else{
+            // return "ff";
+            // return redirect()->route('login')->withInput()
+            // ->withErrors('Email-Address And Password Are Wrong.');
             return redirect()->route('login')
                 ->with('error','Email-Address And Password Are Wrong.');
         }
