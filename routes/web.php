@@ -60,14 +60,14 @@ Route::group(['middleware' => ['auth', 'user-access:admin'], 'prefix' => 'admin'
     Route::resource('post-type', PostTypeController::class);
 // prof data
     Route::resource('professors', ProfessorsController::class);
-    Route::resource('professor-subjects', ProfessorSubjectsController::class);
-    Route::resource('subject-materials', SubjectMaterialsController::class);
-    Route::resource('subject-assignment', SubjectAssignmentController::class);
+    Route::resource('all-professor-subjects', ProfessorSubjectsController::class);
+    Route::resource('all-subject-materials', SubjectMaterialsController::class);
+    Route::resource('all-subject-assignment', SubjectAssignmentController::class);
     //student data
     Route::resource('students', StudentsController::class);
     Route::resource('student-subjects', StudentSubjectsController::class);
     Route::resource('student-solutions', StudentSolutionsController::class);
-    Route::resource('posts', PostsController::class);
+    Route::resource('all-posts', PostsController::class);
 });
 
 /*------------------------------------------

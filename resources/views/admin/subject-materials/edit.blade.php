@@ -31,7 +31,7 @@
         <!--begin::Container-->
         <div class="container-xxl">
             <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row"
-            action="{{ route('subject-materials.update', $row->id) }}" method="post" enctype="multipart/form-data">
+            action="{{ route('all-subject-materials.update', $row->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -143,7 +143,7 @@
 
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
-                        <a href="{{ route('subject-materials.index') }}" id="kt_ecommerce_add_product_cancel"
+                        <a href="{{ route('all-subject-materials.index') }}" id="kt_ecommerce_add_product_cancel"
                             class="btn btn-light me-5">Cancel</a>
                         <!--end::Button-->
                         <!--begin::Button-->

@@ -22,7 +22,7 @@ class PostsController extends Controller
 
         $this->object = $object;
         $this->viewName = 'admin.posts.';
-        $this->routeName = 'posts.';
+        $this->routeName = 'all-posts.';
     }
     public function index()
     {

@@ -172,7 +172,7 @@
                 data-kt-menu="true">
                 <!--begin::Menu item-->
                 <div class="menu-item px-3">
-                    <a href="{{ route('posts.show', $row->id) }}"
+                    <a href="{{ route('all-posts.show', $row->id) }}"
                         class="menu-link px-3">show</a>
                 </div>
                 <!--end::Menu item-->

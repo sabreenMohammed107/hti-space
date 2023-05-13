@@ -31,7 +31,7 @@
         <!--begin::Container-->
         <div class="container-xxl">
             <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row"
-                action="{{ route('professor-subjects.store') }}" method="post" enctype="multipart/form-data">
+                action="{{ route('all-professor-subjects.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <!--begin::Aside column-->
                 <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
@@ -97,7 +97,7 @@
 
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
-                        <a href="{{ route('professor-subjects.index') }}" id="kt_ecommerce_add_product_cancel"
+                        <a href="{{ route('all-professor-subjects.index') }}" id="kt_ecommerce_add_product_cancel"
                             class="btn btn-light me-5">Cancel</a>
                         <!--end::Button-->
                         <!--begin::Button-->

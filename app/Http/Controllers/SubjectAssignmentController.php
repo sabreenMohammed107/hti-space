@@ -26,7 +26,7 @@ class SubjectAssignmentController extends Controller
 
         $this->object = $object;
         $this->viewName = 'admin.subject-assignment.';
-        $this->routeName = 'subject-assignment.';
+        $this->routeName = 'all-subject-assignment.';
     }
     public function index()
     {

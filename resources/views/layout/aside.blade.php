@@ -153,7 +153,7 @@
                         </div>
 
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('professor-subjects.index') }}">
+                            <a class="menu-link" href="{{ route('all-professor-subjects.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -161,7 +161,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('subject-materials.index') }}">
+                            <a class="menu-link" href="{{ route('all-subject-materials.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -170,7 +170,7 @@
                         </div>
 
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('subject-assignment.index') }}">
+                            <a class="menu-link" href="{{ route('all-subject-assignment.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -246,7 +246,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('posts.index') }}">
+                            <a class="menu-link" href="{{ route('all-posts.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

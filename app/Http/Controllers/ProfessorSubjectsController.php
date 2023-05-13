@@ -25,7 +25,7 @@ class ProfessorSubjectsController extends Controller
 
         $this->object = $object;
         $this->viewName = 'admin.professor-subjects.';
-        $this->routeName = 'professor-subjects.';
+        $this->routeName = 'all-professor-subjects.';
     }
     public function index()
     {

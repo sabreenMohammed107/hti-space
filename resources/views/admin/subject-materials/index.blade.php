@@ -60,7 +60,7 @@
                     <div class="card-toolbar">
                         <!--begin::Add customer-->
                       	<!--begin::Add product-->
-											<a href="{{ route('subject-materials.create') }}" class="btn btn-primary">Add subject materials</a>
+											<a href="{{ route('all-subject-materials.create') }}" class="btn btn-primary">Add subject materials</a>
 											<!--end::Add product-->
 
                         <!--end::Add customer-->
@@ -180,7 +180,7 @@
                 data-kt-menu="true">
                 <!--begin::Menu item-->
                 <div class="menu-item px-3">
-                    <a href="{{ route('subject-materials.edit', $row->id) }}"
+                    <a href="{{ route('all-subject-materials.edit', $row->id) }}"
                         class="menu-link px-3">Edit</a>
                 </div>
                 <!--end::Menu item-->
@@ -190,7 +190,7 @@
                         data-kt-ecommerce-category-filter="delete_row">Delete</a>
 
 
-        <form id="delete_{{$row->id}}" action="{{ route('subject-materials.destroy', $row->id) }}"  method="POST" style="display: none;">
+        <form id="delete_{{$row->id}}" action="{{ route('all-subject-materials.destroy', $row->id) }}"  method="POST" style="display: none;">
         @csrf
         @method('DELETE')
 

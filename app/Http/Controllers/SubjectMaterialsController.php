@@ -25,7 +25,7 @@ class SubjectMaterialsController extends Controller
 
         $this->object = $object;
         $this->viewName = 'admin.subject-materials.';
-        $this->routeName = 'subject-materials.';
+        $this->routeName = 'all-subject-materials.';
     }
     public function index()
     {
