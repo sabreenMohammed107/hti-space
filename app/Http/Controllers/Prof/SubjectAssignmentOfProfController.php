@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Prof;
 
 use App\Http\Controllers\Controller;
+use App\Models\Assignment_solution;
 use App\Models\Professor;
 use App\Models\Professor_subject;
 use App\Models\Subject;
@@ -87,7 +88,9 @@ class SubjectAssignmentOfProfController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $row=Subject_assignment::where('id',$id)->first();
+        $degrees=Assignment_solution::where('assignment_id',$id)->get();
+        return view($this->viewName . 'degree', compact(['row','degrees']));
     }
 
     /**
@@ -188,5 +191,18 @@ $row->delete();
         $file->move($uploadPath, $imageName);
 
         return $imageName;
+    }
+    public function solutionDegree(Request $request){
+        $count = $request->counter;
+        $details = [];
+
+        for ($i = 1; $i <= $count; $i++) {
+            $row = Assignment_solution::where('id', $request->get('assignment_solutions_id'.$i))->first();
+
+            $row->update([
+                'degree_pct' =>$request->get('degree_pct'.$i),
+            ]);
+    }
+    return redirect()->back()->with('flash_del', 'update done successfully!');
     }
 }

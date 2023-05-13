@@ -172,6 +172,10 @@
                         class="menu-link px-3">Edit</a>
                 </div>
                 <!--end::Menu item-->
+                <div class="menu-item px-3">
+                    <a href="{{ route('subject-assignment.show', $row->id) }}"
+                        class="menu-link px-3">Solutions</a>
+                </div>
                  <!--begin::Menu item-->
                  <div class="menu-item px-3">
                     <a href="#" class="menu-link px-3"

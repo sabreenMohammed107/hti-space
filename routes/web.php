@@ -85,6 +85,8 @@ Route::group(['middleware' => ['auth', 'user-access:prof'], 'prefix' => 'prof'],
     Route::resource('subject-materials', MaterialSubjectOfProfController::class);
     Route::resource('subject-assignment', SubjectAssignmentOfProfController::class);
     Route::resource('posts', PostsOfProfController::class);
+    Route::post('/solutionDegree',[SubjectAssignmentOfProfController::class, 'solutionDegree'])->name('solutionDegree');
+
 
 });
 
