@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Professor;
+use App\Models\Professor_subject;
 use App\Models\Subject;
 use App\Models\Subject_assignment;
 use App\Models\Subject_material;
@@ -85,7 +86,11 @@ class SubjectAssignmentController extends Controller
     {
         $row=Subject_assignment::where('id',$id)->first();
         $professors=Professor::all();
-        $subjects=Subject::all();
+        $ids = Professor_subject::where('professor_id', $row->professor_id)->pluck('subject_id');
+
+
+        $subjects = Subject::whereIn('id', $ids)->orderBy("created_at", "Desc")->get();
+        // $subjects=Subject::all();
         return view($this->viewName . 'edit', compact(['row','professors','subjects']));
     }
 

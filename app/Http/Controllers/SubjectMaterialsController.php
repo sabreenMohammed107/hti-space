@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Professor;
+use App\Models\Professor_subject;
 use App\Models\Subject;
 use App\Models\Subject_material;
 use Carbon\Carbon;
@@ -80,7 +81,11 @@ class SubjectMaterialsController extends Controller
     {
         $row=Subject_material::where('id',$id)->first();
         $professors=Professor::all();
-        $subjects=Subject::all();
+        $ids = Professor_subject::where('professor_id', $row->professor_id)->pluck('subject_id');
+
+
+        $subjects = Subject::whereIn('id', $ids)->orderBy("created_at", "Desc")->get();
+        // $subjects=Subject::all();
         return view($this->viewName . 'edit', compact(['row','professors','subjects']));
     }
 
@@ -133,5 +138,26 @@ class SubjectMaterialsController extends Controller
         $file->move($uploadPath, $imageName);
 
         return $imageName;
+    }
+
+
+    public function fetchSubject(Request $request)
+    {
+
+        $select = $request->get('select');
+        $value = $request->get('value');
+
+
+        $ids = Professor_subject::where('professor_id', $value)->pluck('subject_id');
+
+
+    $output = '<option value="">Select Subject</option>';
+    $subjects = Subject::whereIn('id', $ids)->orderBy("created_at", "Desc")->get();
+    foreach ($subjects as $subject) {
+        $output .= '<option value="' . $subject->id . '">' . $subject->name . '</option>';
+    }
+
+
+        echo $output;
     }
 }

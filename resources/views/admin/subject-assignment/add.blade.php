@@ -135,14 +135,14 @@
 
                                 </label>
                                 <!--end::Label-->
-                                <select required class="form-select form-select-solid" name="subject_id"
+                                <select required class="form-select form-select-solid" id="subject_id" name="subject_id"
                                     data-control="select2" data-placeholder="Select an option" data-allow-clear="true">
                                     <option></option>
-                                    @foreach ($subjects as $subject)
+                                    {{-- @foreach ($subjects as $subject)
                                         <option value="{{ $subject->id }}"
                                             {{ old('subject_id') == $subject->id ? 'selected' : '' }}>{{ $subject->name }}
                                         </option>
-                                    @endforeach
+                                    @endforeach --}}
 
                                 </select>
                             </div>
@@ -252,6 +252,36 @@
                 enableTime: true,
                 noCalendar: true,
                 dateFormat: "H:i",
+            });
+
+            $('.dynamic').change(function() {
+                if ($(this).val() != '') {
+                    var select = $(this).attr("id");
+                    var value = $(this).val();
+
+                    var trigger = $(this);
+                    var _token = $('input[name="_token"]').val();
+                    // alert("Second");
+
+                    $.ajax({
+                        url: "{{ route('dynamicSubject.fetch') }}",
+                        method: "get",
+                        data: {
+                            select: select,
+                            value: value,
+                            _token: _token
+                        },
+                        success: function(result) {
+                            $("#subject_id").html(result);
+
+                        },
+                        error: function(xhr, status, error) {
+                            var err = eval("(" + xhr.responseText + ")");
+                            alert(err.Message);
+                        }
+
+                    })
+                }
             });
         });
     </script>

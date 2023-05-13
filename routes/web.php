@@ -62,12 +62,14 @@ Route::group(['middleware' => ['auth', 'user-access:admin'], 'prefix' => 'admin'
     Route::resource('professors', ProfessorsController::class);
     Route::resource('all-professor-subjects', ProfessorSubjectsController::class);
     Route::resource('all-subject-materials', SubjectMaterialsController::class);
+    Route::get('dynamicSubject/fetch',[SubjectMaterialsController::class,'fetchSubject'] )->name('dynamicSubject.fetch');
     Route::resource('all-subject-assignment', SubjectAssignmentController::class);
     //student data
     Route::resource('students', StudentsController::class);
     Route::resource('student-subjects', StudentSubjectsController::class);
     Route::resource('student-solutions', StudentSolutionsController::class);
     Route::resource('all-posts', PostsController::class);
+
 });
 
 /*------------------------------------------
