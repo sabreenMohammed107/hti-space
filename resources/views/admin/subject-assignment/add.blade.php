@@ -152,8 +152,9 @@
                                 <label class="required form-label">assignment </label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input class="form-control  form-control-solid " name="assignment"
-                                    value="{{ old('assignment') }}" />
+                                <textarea class="ckeditor form-control" name="assignment">{{ old('assignment') }}</textarea>
+
+
 
 
                             </div>

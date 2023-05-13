@@ -131,8 +131,8 @@
                                 <label class="required form-label">assignment </label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input class="form-control  form-control-solid " name="assignment"
-                                    value="{{$row->assignment }}" />
+
+                                    <textarea class="ckeditor form-control" name="assignment">{!! $row->assignment  !!} </textarea>
 
 
                             </div>

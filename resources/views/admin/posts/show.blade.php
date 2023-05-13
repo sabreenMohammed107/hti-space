@@ -169,7 +169,7 @@
                                         <label class="form-label"> Text</label>
                                         <!--end::Label-->
                                         <!--begin::Editor-->
-                                        <textarea class="form-control form-control-solid" rows="20" name="text" placeholder="text">{{ $row->text }}</textarea>
+                                        <textarea class="form-control form-control-solid" rows="20" name="text" placeholder="text">{!! $row->text !!}</textarea>
                                         <!--end::Editor-->
 
                                     </div>

@@ -53,7 +53,9 @@ class StudentSubjectsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $row=Student_subject::where('id',$id)->first();
+        $degrees=Student_subject::where('student_id',$row->student_id)->get();
+        return view($this->viewName . 'subjects', compact(['row','degrees']));
     }
 
     /**

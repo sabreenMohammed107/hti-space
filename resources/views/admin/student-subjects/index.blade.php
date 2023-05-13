@@ -86,8 +86,11 @@
                                 </th>
                                 <th class="min-w-200px">Student</th>
 
-                                <th class="text-end min-w-70px">Subject</th>
-                                <th class="text-end min-w-100px">Grade pct</th>
+                                <th class="text-end min-w-70px">phone</th>
+                                <th class="text-end min-w-100px">email</th>
+                                <th class="text-end min-w-100px">Stage</th>
+                                <th class="text-end min-w-100px">Unit</th>
+                                <th class="text-end min-w-70px">Actions</th>
 
                             </tr>
                             <!--end::Table row-->
@@ -140,13 +143,29 @@
         <!--begin::Qty=-->
         <td class="text-end pe-0" data-order="15">
             <input type="hidden" name="" id=""  data-kt-ecommerce-category-filter="category_id" value="{{$row->id}}" >
-            <span class="fw-bolder ms-3">{{ $row->subject->name ??'' }}</span>
+            <span class="fw-bolder ms-3">{{ $row->student->phone ?? ''}}</span>
         </td>
         <!--end::Qty=-->
         <td class="text-end pe-0" data-order="15">
-            <span class="fw-bolder ms-3">{{ $row->grade_pct ??'' }} %</span>
+            <span class="fw-bolder ms-3">{{ $row->student->user->email ?? ''}}</span>
         </td>
         <!--end::Status=-->
+
+                <!--end::Qty=-->
+                <td class="text-end pe-0" data-order="15">
+                    <span class="fw-bolder ms-3">{{ $row->student->stage->name ?? ''}}</span>
+                </td>
+                <!--end::Status=-->
+
+                        <!--end::Qty=-->
+        <td class="text-end pe-0" data-order="15">
+            <span class="fw-bolder ms-3">{{ $row->student->student_unit ?? ''}}</span>
+        </td>
+        <!--end::Status=-->
+        <td class="text-end pe-0" data-order="15">
+            <a href="{{ route('student-subjects.show', $row->id) }}"
+                class="menu-link px-3">Subjects</a>
+        </td>
 
     </tr>
     <!--end::Table row-->

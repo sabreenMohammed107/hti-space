@@ -50,7 +50,12 @@
      <script src="{{asset('dist/assets/js/custom/utilities/modals/create-project/main.js')}}"></script>
      <script src="{{asset('dist/assets/js/custom/utilities/modals/users-search.js')}}"></script>
      <script src="{{asset('dist/assets/js/custom/utilities/modals/new-target.js')}}"></script>
-
+     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+     <script type="text/javascript">
+        $(document).ready(function () {
+            $('.ckeditor').ckeditor();
+        });
+    </script>
      @yield('scripts')
      <!--end::Page Custom Javascript-->
      <!--end::Javascript-->

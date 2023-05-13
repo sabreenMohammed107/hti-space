@@ -15,6 +15,7 @@ class Student extends Model
         'image',
         'position',
         'stage_id',
+        'student_unit'
 
     ];
 

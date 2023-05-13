@@ -160,10 +160,10 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">position</label>
-                            <input type="text" id="position" value="{{ old('position') }}"
-                                name="position" maxlength="15" class="form-control  @error('position') is-invalid @enderror">
-                            @error('position')
+                            <label class="form-label">student_unit</label>
+                            <input type="number" id="student_unit" value="{{ old('student_unit') }}"
+                                name="student_unit"  class="form-control  @error('student_unit') is-invalid @enderror">
+                            @error('student_unit')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
