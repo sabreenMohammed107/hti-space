@@ -9,7 +9,7 @@ use App\Models\Subject_material;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use File
+use File;
 class SubjectMaterialsController extends Controller
 {
     protected $object;
