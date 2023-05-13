@@ -90,7 +90,7 @@
                                 <th class="text-end min-w-70px">phone</th>
                                 <th class="text-end min-w-100px">email</th>
                                 <th class="text-end min-w-100px">Stage</th>
-                                <th class="text-end min-w-100px">Unit</th>
+                                {{-- <th class="text-end min-w-100px">Unit</th> --}}
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -155,9 +155,9 @@
             <span class="fw-bolder text-dark">{{ $row->stage->name ?? '' }}</span>
         </td>
           <!--begin::Price=-->
-          <td class="text-end pe-0">
+          {{-- <td class="text-end pe-0">
             <span class="fw-bolder text-dark">{{ $row->student_unit ?? '' }}</span>
-        </td>
+        </td> --}}
         <!--end::Price=-->
         <!--end::Status=-->
         <!--begin::Action=-->

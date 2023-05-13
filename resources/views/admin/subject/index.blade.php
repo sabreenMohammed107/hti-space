@@ -86,7 +86,7 @@
                                 <th class="min-w-250px">code</th>
                                 <th class="min-w-250px"> Name</th>
 
-
+                                <th class="min-w-250px"> subject_unit</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -129,6 +129,17 @@
 
 
                                                 {{ $row->name }}</a>
+
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+
+                                        <div class="d-flex">
+
+
+                                                {{ $row->subject_unit }}</a>
 
 
                                         </div>
@@ -293,7 +304,20 @@
                                                         </div>
 
 
-
+                                                        <div class="d-flex flex-column mb-8 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+                                                                <span class="required">subject_unit</span>
+                                                                <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                                    data-bs-toggle="tooltip"
+                                                                    title="Enter subject_unit "></i>
+                                                            </label>
+                                                            <!--end::Label-->
+                                                            <input type="number" class="form-control form-control-solid"
+                                                                placeholder="Enter subject_unit  "
+                                                                name="subject_unit"
+                                                                value="{{ $row->subject_unit }}" />
+                                                        </div>
                                                         <div class="d-flex flex-column mb-8 fv-row">
                                                             <!--begin::Label-->
                                                             <label class="d-flex align-items-center fs-6 fw-bold mb-2">
@@ -472,7 +496,20 @@
                                 value="" />
                         </div>
 
-
+                        <div class="d-flex flex-column mb-8 fv-row">
+                            <!--begin::Label-->
+                            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+                                <span class="required">subject_unit</span>
+                                <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                    data-bs-toggle="tooltip"
+                                    title="Enter subject_unit "></i>
+                            </label>
+                            <!--end::Label-->
+                            <input type="number" class="form-control form-control-solid"
+                                placeholder="Enter subject_unit  "
+                                name="subject_unit"
+                                value="" />
+                        </div>
 
                         <div class="d-flex flex-column mb-8 fv-row">
                             <!--begin::Label-->

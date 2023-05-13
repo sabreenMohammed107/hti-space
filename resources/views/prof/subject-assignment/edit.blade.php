@@ -6,14 +6,14 @@
             <!--begin::Info-->
             <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
                 <!--begin::Title-->
-                <h1 class="text-dark fw-bolder my-1 fs-2">subject materials</h1>
+                <h1 class="text-dark fw-bolder my-1 fs-2">subject Assignments</h1>
                 <!--end::Title-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb fw-bold fs-base my-1">
                     <li class="breadcrumb-item text-muted">
                         <a href="../dist/index.html" class="text-muted text-hover-primary">Home</a>
                     </li>
-                    <li class="breadcrumb-item text-muted">subject materials</li>
+                    <li class="breadcrumb-item text-muted">subject Assignments</li>
 
                     <li class="breadcrumb-item text-dark">All</li>
                 </ul>
@@ -31,7 +31,7 @@
         <!--begin::Container-->
         <div class="container-xxl">
             <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row"
-            action="{{ route('subject-materials.update', $row->id) }}" method="post" enctype="multipart/form-data">
+            action="{{ route('subject-assignment.update', $row->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -182,7 +182,7 @@
 
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
-                        <a href="{{ route('subject-materials.index') }}" id="kt_ecommerce_add_product_cancel"
+                        <a href="{{ route('subject-assignment.index') }}" id="kt_ecommerce_add_product_cancel"
                             class="btn btn-light me-5">Cancel</a>
                         <!--end::Button-->
                         <!--begin::Button-->

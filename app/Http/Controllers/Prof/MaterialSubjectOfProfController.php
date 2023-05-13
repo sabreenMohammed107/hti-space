@@ -8,9 +8,10 @@ use App\Models\Professor_subject;
 use App\Models\Subject;
 use App\Models\Subject_material;
 use Carbon\Carbon;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use File;
 class MaterialSubjectOfProfController extends Controller
 {
 
@@ -127,13 +128,23 @@ class MaterialSubjectOfProfController extends Controller
      */
     public function destroy(string $id)
     {
-        $profLogin = Auth::user()->id;
-        $prof = Professor::where('user_id', $profLogin)->first();
-        $materials = Subject_material::where('professor_id', $prof->id)->get();
-        foreach ($materials as $row) {
-            $row->delete();
-        }
-        return redirect()->back()->with('flash_del', 'Successfully Delete!');
+
+        $row=Subject_material::where('id',$id)->first();
+        // Delete File ..
+        $file = $row->file_attach;
+        $file_name = public_path('uploads/subject_assignments/' . $file);
+        try {
+            File::delete($file_name);
+
+
+           $row->delete();
+           return redirect()->back()->with('flash_del', 'Successfully Delete!');
+
+       } catch (QueryException $q) {
+           // return redirect()->back()->withInput()->with('flash_danger', $q->getMessage());
+           return redirect()->back()->withInput()->with('flash_danger', 'Can’t delete This Row
+           Because it related with another table');
+       }
     }
 
     public function UplaodImage($file_request)

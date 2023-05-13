@@ -13,5 +13,6 @@ class Subject extends Model
     'name',
     'description',
     'image',
+    'subject_unit'
     ];
 }

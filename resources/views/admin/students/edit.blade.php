@@ -148,7 +148,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label class="form-label">student_unit</label>
                             <input type="number" id="student_unit" value="{{$row->student_unit}}"
                                 name="student_unit"  class="form-control  @error('student_unit') is-invalid @enderror">
@@ -157,7 +157,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div> --}}
 
                         <div class="mb-3">
                             <label class="fs-6 fw-bold form-label mt-3">
