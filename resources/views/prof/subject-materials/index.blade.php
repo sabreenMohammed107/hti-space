@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.prof.main')
 
 @section('breadcrumb')
     <div class="toolbar" id="kt_toolbar">
@@ -84,7 +84,7 @@
                                             value="1" />
                                     </div>
                                 </th>
-                                <th class="min-w-200px">Professor</th>
+                                {{-- <th class="min-w-200px">Professor</th> --}}
                                 {{-- <th class="text-end min-w-100px">Date</th> --}}
                                 {{-- <th class="text-end min-w-100px">Time</th> --}}
                                 <th class="text-end min-w-70px">Subject</th>
@@ -107,38 +107,7 @@
             </div>
         </td>
         <!--end::Checkbox-->
-        <!--begin::Category=-->
-        <td>
-            <div class="d-flex align-items-center">
-      <!--begin::Thumbnail-->
-      <a href="#"
-      class="symbol symbol-50px">
-      <span class="symbol-label"
 
-          style="background-image:url({{ asset('uploads/professors') }}/{{ $row->image }});"></span>
-  </a>
-  <!--end::Thumbnail-->
-                <div class="ms-5">
-                    <!--begin::Title-->
-                    <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bolder mb-1"
-                    data-kt-ecommerce-category-filter="category_name" >{{ $row->professor->user->name ?? ''}}</a>
-                    <!--end::Title-->
-                </div>
-            </div>
-        </td>
-        <!--end::Category=-->
-         <!--begin::SKU=-->
-         {{-- <td class="text-end pe-0">
-
-            <span class="fw-bolder">{{ $row->event_date_form }}</span>
-        </td> --}}
-        <!--end::SKU=-->
-        <!--begin::SKU=-->
-        {{-- <td class="text-end pe-0">
-            <input type="hidden" name="" id=""  data-kt-ecommerce-category-filter="category_id" value="{{$row->id}}" >
-            <span class="fw-bolder">{{ $row->event_time_form }}</span>
-        </td> --}}
-        <!--end::SKU=-->
         <!--begin::Qty=-->
         <td class="text-end pe-0" data-order="15">
             <input type="hidden" name="" id=""  data-kt-ecommerce-category-filter="category_id" value="{{$row->id}}" >

@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.prof.main')
 
 @section('breadcrumb')
     <div class="toolbar" id="kt_toolbar">
@@ -6,14 +6,14 @@
             <!--begin::Info-->
             <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
                 <!--begin::Title-->
-                <h1 class="text-dark fw-bolder my-1 fs-2"> subject materials</h1>
+                <h1 class="text-dark fw-bolder my-1 fs-2"> Posts</h1>
                 <!--end::Title-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb fw-bold fs-base my-1">
                     <li class="breadcrumb-item text-muted">
                         <a href="../dist/index.html" class="text-muted text-hover-primary">Home</a>
                     </li>
-                    <li class="breadcrumb-item text-muted">subject materials</li>
+                    <li class="breadcrumb-item text-muted">Posts</li>
 
                     <li class="breadcrumb-item text-dark">All</li>
                 </ul>
@@ -60,8 +60,8 @@
                     <div class="card-toolbar">
                         <!--begin::Add customer-->
                       	<!--begin::Add product-->
-											<a href="{{ route('subject-materials.create') }}" class="btn btn-primary">Add subject materials</a>
 											<!--end::Add product-->
+											 <a href="{{ route('posts.create') }}" class="btn btn-primary">Add post</a>
 
                         <!--end::Add customer-->
                     </div>
@@ -84,12 +84,11 @@
                                             value="1" />
                                     </div>
                                 </th>
-                                <th class="min-w-200px">Professor</th>
+                                <th class="min-w-200px">Title</th>
                                 {{-- <th class="text-end min-w-100px">Date</th> --}}
                                 {{-- <th class="text-end min-w-100px">Time</th> --}}
                                 <th class="text-end min-w-70px">Subject</th>
-                                <th class="text-end min-w-70px">upload date</th>
-                                <th class="text-end min-w-70px">Material</th>
+                                <th class="text-end min-w-70px">post date</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -115,13 +114,13 @@
       class="symbol symbol-50px">
       <span class="symbol-label"
 
-          style="background-image:url({{ asset('uploads/professors') }}/{{ $row->image }});"></span>
+          style="background-image:url({{ asset('uploads/posts') }}/{{ $row->image }});"></span>
   </a>
   <!--end::Thumbnail-->
                 <div class="ms-5">
                     <!--begin::Title-->
                     <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bolder mb-1"
-                    data-kt-ecommerce-category-filter="category_name" >{{ $row->professor->user->name ?? ''}}</a>
+                    data-kt-ecommerce-category-filter="category_name" >{{ $row->title ?? ''}}</a>
                     <!--end::Title-->
                 </div>
             </div>
@@ -149,16 +148,10 @@
         <!--end::Qty=-->
         <td class="text-end pe-0" data-order="15">
             <span class="fw-bolder ms-3">
-            {{$row->upload_date ?? ''}}
+            {{$row->post_date ?? ''}}
             </span>
         </td>
         <!--end::Price=-->
-
-        <td class="text-end pe-0" data-order="15">
-            <span class="fw-bolder ms-3">
-            {{$row->file_path ?? ''}}
-            </span>
-        </td>
         <!--end::Status=-->
         <!--begin::Action=-->
         <td class="text-end">
@@ -180,24 +173,26 @@
                 data-kt-menu="true">
                 <!--begin::Menu item-->
                 <div class="menu-item px-3">
-                    <a href="{{ route('subject-materials.edit', $row->id) }}"
+                    <a href="{{ route('posts.edit', $row->id) }}"
                         class="menu-link px-3">Edit</a>
                 </div>
+                <div class="menu-item px-3">
+                    <a href="{{ route('posts.show', $row->id) }}"
+                        class="menu-link px-3">show</a>
+                </div>
                 <!--end::Menu item-->
-                 <!--begin::Menu item-->
-                 <div class="menu-item px-3">
+                <div class="menu-item px-3">
                     <a href="#" class="menu-link px-3"
                         data-kt-ecommerce-category-filter="delete_row">Delete</a>
 
 
-        <form id="delete_{{$row->id}}" action="{{ route('subject-materials.destroy', $row->id) }}"  method="POST" style="display: none;">
+        <form id="delete_{{$row->id}}" action="{{ route('posts.destroy', $row->id) }}"  method="POST" style="display: none;">
         @csrf
         @method('DELETE')
 
         <button type="submit" value=""></button>
         </form>
                 </div>
-                <!--end::Menu item-->
             </div>
             <!--end::Menu-->
         </td>

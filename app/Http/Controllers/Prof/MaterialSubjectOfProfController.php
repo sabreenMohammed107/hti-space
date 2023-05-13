@@ -1,15 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Prof;
 
+use App\Http\Controllers\Controller;
 use App\Models\Professor;
+use App\Models\Professor_subject;
 use App\Models\Subject;
 use App\Models\Subject_material;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class SubjectMaterialsController extends Controller
+class MaterialSubjectOfProfController extends Controller
 {
+
     protected $object;
     protected $viewName;
     protected $routeName;
@@ -24,12 +28,14 @@ class SubjectMaterialsController extends Controller
         $this->middleware('auth');
 
         $this->object = $object;
-        $this->viewName = 'admin.subject-materials.';
+        $this->viewName = 'prof.subject-materials.';
         $this->routeName = 'subject-materials.';
     }
     public function index()
     {
-        $rows = Subject_material::orderBy("created_at", "Desc")->get();
+        $profLogin = Auth::user()->id;
+        $profId = Professor::where('user_id', $profLogin)->first();
+        $rows = Subject_material::where('professor_id', $profId->id)->orderBy("created_at", "Desc")->get();
 
         return view($this->viewName . 'index', compact(['rows']));
     }
@@ -39,9 +45,13 @@ class SubjectMaterialsController extends Controller
      */
     public function create()
     {
-        $professors=Professor::all();
-        $subjects=Subject::all();
-        return view($this->viewName . 'add', compact(['professors','subjects']));
+        $profLogin = Auth::user()->id;
+        $profId = Professor::where('user_id', $profLogin)->first();
+        $ids = Professor_subject::where('professor_id', $profId->id)->pluck('subject_id');
+
+        $subjects = Subject::whereIn('id', $ids)->orderBy("created_at", "Desc")->get();
+
+        return view($this->viewName . 'add', compact(['subjects']));
     }
 
     /**
@@ -49,21 +59,23 @@ class SubjectMaterialsController extends Controller
      */
     public function store(Request $request)
     {
+        $profLogin = Auth::user()->id;
+        $profId = Professor::where('user_id', $profLogin)->first();
         $request->validate([
             'file_path' => 'required|mimes:pdf,csv,xls,xlsx,doc,docx|max:10240',
         ]);
-        $input = $request->except(['_token','file_path']);
+        $input = $request->except(['_token', 'file_path']);
         if ($request->hasFile('file_path')) {
             $attach_image = $request->file('file_path');
 
             $input['file_path'] = $this->UplaodImage($attach_image);
 
-            $input['file_type_id'] =$request->file('file_path')->getClientOriginalExtension();
+            $input['file_type_id'] = $request->file('file_path')->getClientOriginalExtension();
         }
         $input['upload_date'] = Carbon::now();
+        $input['professor_id'] = $profId->id;
         Subject_material::create($input);
-        return redirect()->route($this->routeName.'index')->with('flash_success', 'Successfully Saved!');    }
-
+        return redirect()->route($this->routeName . 'index')->with('flash_success', 'Successfully Saved!');}
 
     /**
      * Display the specified resource.
@@ -78,10 +90,13 @@ class SubjectMaterialsController extends Controller
      */
     public function edit(string $id)
     {
-        $row=Subject_material::where('id',$id)->first();
-        $professors=Professor::all();
-        $subjects=Subject::all();
-        return view($this->viewName . 'edit', compact(['row','professors','subjects']));
+        $row = Subject_material::where('id', $id)->first();
+        $profLogin = Auth::user()->id;
+        $profId = Professor::where('user_id', $profLogin)->first();
+        $ids = Professor_subject::where('professor_id', $profId->id)->pluck('subject_id');
+
+        $subjects = Subject::whereIn('id', $ids)->orderBy("created_at", "Desc")->get();
+        return view($this->viewName . 'edit', compact(['row', 'subjects']));
     }
 
     /**
@@ -89,31 +104,37 @@ class SubjectMaterialsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $profLogin = Auth::user()->id;
+        $profId = Professor::where('user_id', $profLogin)->first();
         $request->validate([
             'file_path' => 'mimes:pdf,csv,xls,xlsx,doc,docx|max:10240',
         ]);
-        $input = $request->except(['_token','file_path']);
+        $input = $request->except(['_token', 'file_path']);
         if ($request->hasFile('file_path')) {
             $attach_image = $request->file('file_path');
 
             $input['file_path'] = $this->UplaodImage($attach_image);
 
-            $input['file_type_id'] =$request->file('file_path')->getClientOriginalExtension();
+            $input['file_type_id'] = $request->file('file_path')->getClientOriginalExtension();
         }
         $input['upload_date'] = Carbon::now();
+        $input['professor_id'] = $profId->id;
         Subject_material::findOrFail($id)->update($input);
-        return redirect()->route($this->routeName.'index')->with('flash_success', 'Successfully Saved!');    }
-
-
+        return redirect()->route($this->routeName . 'index')->with('flash_success', 'Successfully Saved!');}
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $profLogin = Auth::user()->id;
+        $prof = Professor::where('user_id', $profLogin)->first();
+        $materials = Subject_material::where('professor_id', $prof->id)->get();
+        foreach ($materials as $row) {
+            $row->delete();
+        }
+        return redirect()->back()->with('flash_del', 'Successfully Delete!');
     }
-
 
     public function UplaodImage($file_request)
     {

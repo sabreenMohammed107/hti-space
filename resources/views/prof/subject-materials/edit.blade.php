@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.prof.main')
 
 @section('breadcrumb')
     <div class="toolbar" id="kt_toolbar">
@@ -31,11 +31,14 @@
         <!--begin::Container-->
         <div class="container-xxl">
             <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row"
-                action="{{ route('subject-materials.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
+            action="{{ route('subject-materials.update', $row->id) }}" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
                 <!--begin::Aside column-->
                 <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
 
+                    <iframe src="{{ asset('uploads/subject_materials/'.$row->file_path) }}" width="100%" height="400"></iframe>
 
 
                 </div>
@@ -53,21 +56,7 @@
                         <!--end::Card header-->
                         <!--begin::Card body-->
                         <div class="card-body pt-0">
-                            <div class="mb-3">
-                                <label class="fs-6 fw-bold form-label mt-3">
-                                    <option value="">Select Professor..</option>
-                                </label>
-                                <!--end::Label-->
-                                <select required class="form-select form-select-solid dynamic" data-control="select2"
-                                    data-placeholder="Select an option" required data-show-subtext="true"
-                                    name="professor_id" data-live-search="true" id="country" data-dependent="sub">
-                                    <option value=""></option>
-                                    @foreach ($professors as $professor)
-                                        <option value="{{ $professor->id }}" {{ old('professor_id') == $professor->id ? "selected" :""}} >{{ $professor->user->name ?? '' }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
+
                             <div class="mb-3">
                                 <label class="fs-6 fw-bold form-label mt-3">
                                     <span class="required">Add Subjects</span>
@@ -78,7 +67,7 @@
                                     data-control="select2" data-placeholder="Select an option" data-allow-clear="true">
                                     <option></option>
                                     @foreach ($subjects as $subject)
-                                        <option value="{{ $subject->id }}" {{ old('subject_id') == $subject->id ? "selected" :""}}>{{ $subject->name }}
+                                        <option value="{{ $subject->id }}" {{ $row->subject_id == $subject->id ? "selected" :""}}>{{ $subject->name }}
                                         </option>
                                     @endforeach
 
@@ -89,8 +78,8 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row w-100 flex-md-root">
                                     <!--begin::Label-->
-                                    <label for="file"> Material File <span class="text-danger">*</span> </label>
-                                    <input type="file" name="file_path"
+                                    <label for="file"> Material File <span class="text-danger">* {{ $row->file_path }}</span> </label>
+                                    <input type="file" value="{{ asset('uploads/subject_materials/'.$row->file_path) }}" name="file_path"
                                         class="form-control @error('file_path') is-invalid @enderror">
                                     @error('file_path')
                                         <div class="invalid-feedback">{{ $message }} </div>
@@ -113,7 +102,7 @@
                             {{-- <div class="mb-10 fv-row">
                                 <label class="required form-label">upload Date</label>
 
-                                <input class="form-control  form-control-solid dPick" name="upload_date" value="{{ old('upload_date') }}"
+                                <input class="form-control  form-control-solid dPick" name="upload_date" value="{{ $row->upload_date }}"
                                     placeholder="Pick date" id="kt_datepicker_3" />
 
 
@@ -125,7 +114,7 @@
                                 <label class="form-label"> Description</label>
                                 <!--end::Label-->
                                 <!--begin::Editor-->
-                                <textarea class="form-control form-control-solid" rows="3" name="description" placeholder="Description">{{ old('description') }}</textarea>
+                                <textarea class="form-control form-control-solid" rows="3" name="description" placeholder="Description">{{ $row->description }}</textarea>
                                 <!--end::Editor-->
 
                             </div>

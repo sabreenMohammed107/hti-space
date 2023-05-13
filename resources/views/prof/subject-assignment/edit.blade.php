@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.prof.main')
 
 @section('breadcrumb')
     <div class="toolbar" id="kt_toolbar">
@@ -31,11 +31,51 @@
         <!--begin::Container-->
         <div class="container-xxl">
             <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row"
-                action="{{ route('subject-materials.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
+            action="{{ route('subject-materials.update', $row->id) }}" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
                 <!--begin::Aside column-->
                 <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+      <!--begin::Thumbnail settings-->
+      <div class="card card-flush py-4">
+        <!--begin::Card header-->
+        <div class="card-header">
+            <!--begin::Card title-->
+            <div class="card-title">
+                <h2> Edit Thumbnail</h2>
+            </div>
+            <!--end::Card title-->
+        </div>
+        <!--end::Card header-->
+        <!--begin::Image input wrapper-->
+        <div class="card-body text-center pt-0">
+            <!--begin::Image input-->
+            <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true"
+                style="background-image: url('{{ asset('uploads/subject_assignments') }}/{{ $row->image }}')">
+                <div class="image-input-wrapper w-150px h-150px"
+                    style="background-image: url(' {{ asset('uploads/subject_assignments') }}/{{ $row->image }}')">
 
+                </div>
+                <!--end::Preview existing avatar-->
+                <!--begin::Edit-->
+                <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                    data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
+                    <i class="bi bi-pencil-fill fs-7"></i>
+                    <!--begin::Inputs-->
+                    <input type="file" name="image" accept=".png, .jpg, .jpeg" />
+                    <input type="hidden" name="avatar_remove" />
+                    <!--end::Inputs-->
+                </label>
+                <!--end::Edit-->
+
+            </div>
+            <!--end::Image input-->
+        </div>
+        <!--end::Image input wrapper-->
+    </div>
+    <!--end::Thumbnail settings-->
+                    <iframe src="{{ asset('uploads/subject_assignments/'.$row->file_attach) }}" width="100%" height="400"></iframe>
 
 
                 </div>
@@ -53,21 +93,7 @@
                         <!--end::Card header-->
                         <!--begin::Card body-->
                         <div class="card-body pt-0">
-                            <div class="mb-3">
-                                <label class="fs-6 fw-bold form-label mt-3">
-                                    <option value="">Select Professor..</option>
-                                </label>
-                                <!--end::Label-->
-                                <select required class="form-select form-select-solid dynamic" data-control="select2"
-                                    data-placeholder="Select an option" required data-show-subtext="true"
-                                    name="professor_id" data-live-search="true" id="country" data-dependent="sub">
-                                    <option value=""></option>
-                                    @foreach ($professors as $professor)
-                                        <option value="{{ $professor->id }}" {{ old('professor_id') == $professor->id ? "selected" :""}} >{{ $professor->user->name ?? '' }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
+
                             <div class="mb-3">
                                 <label class="fs-6 fw-bold form-label mt-3">
                                     <span class="required">Add Subjects</span>
@@ -78,21 +104,33 @@
                                     data-control="select2" data-placeholder="Select an option" data-allow-clear="true">
                                     <option></option>
                                     @foreach ($subjects as $subject)
-                                        <option value="{{ $subject->id }}" {{ old('subject_id') == $subject->id ? "selected" :""}}>{{ $subject->name }}
+                                        <option value="{{ $subject->id }}" {{ $row->subject_id == $subject->id ? "selected" :""}}>{{ $subject->name }}
                                         </option>
                                     @endforeach
 
                                 </select>
                             </div>
 
+                            <!--begin::Input group-->
+                            <div class="mb-10 fv-row">
+                                <!--begin::Label-->
+                                <label class="required form-label">assignment </label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input class="form-control  form-control-solid " name="assignment"
+                                    value="{{$row->assignment }}" />
+
+
+                            </div>
+                            <!--end::Input-->
                             <div class="d-flex flex-wrap gap-5">
                                 <!--begin::Input group-->
                                 <div class="fv-row w-100 flex-md-root">
                                     <!--begin::Label-->
-                                    <label for="file"> Material File <span class="text-danger">*</span> </label>
-                                    <input type="file" name="file_path"
-                                        class="form-control @error('file_path') is-invalid @enderror">
-                                    @error('file_path')
+                                    <label for="file"> assignment File <span class="text-danger">*</span> </label>
+                                    <input type="file" name="file_attach"
+                                        class="form-control @error('file_attach') is-invalid @enderror">
+                                    @error('file_attach')
                                         <div class="invalid-feedback">{{ $message }} </div>
                                     @enderror
                                     {{-- <label for="book_img" class="btn btn-danger mb-2"> upload File  </label> --}}
@@ -110,25 +148,29 @@
                             <!--end::Input-->
 
                             <!--begin::Input group-->
-                            {{-- <div class="mb-10 fv-row">
-                                <label class="required form-label">upload Date</label>
-
-                                <input class="form-control  form-control-solid dPick" name="upload_date" value="{{ old('upload_date') }}"
-                                    placeholder="Pick date" id="kt_datepicker_3" />
-
-
-                            </div> --}}
-                            <!--end::Input-->
-
                             <div class="mb-10 fv-row">
                                 <!--begin::Label-->
-                                <label class="form-label"> Description</label>
+                                <label class="required form-label">assignment Date</label>
                                 <!--end::Label-->
-                                <!--begin::Editor-->
-                                <textarea class="form-control form-control-solid" rows="3" name="description" placeholder="Description">{{ old('description') }}</textarea>
-                                <!--end::Editor-->
+                                <!--begin::Input-->
+                                <input class="form-control  form-control-solid dPick" name="assignment_date"
+                                    value="{{ $row->assignment_date }}" placeholder="Pick date" id="kt_datepicker_1" />
+
 
                             </div>
+                            <!--end::Input-->
+                            <!--begin::Input group-->
+                            <div class="mb-10 fv-row">
+                                <!--begin::Label-->
+                                <label class="required form-label">deadline Date</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input class="form-control  form-control-solid dPick" name="deadline_date"
+                                    value="{{ $row->deadline_date }}" placeholder="Pick date" id="kt_datepicker_3" />
+
+
+                            </div>
+                            <!--end::Input-->
 
 
 

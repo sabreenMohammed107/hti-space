@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.prof.main')
 
 @section('breadcrumb')
     <div class="toolbar" id="kt_toolbar">
@@ -53,21 +53,7 @@
                         <!--end::Card header-->
                         <!--begin::Card body-->
                         <div class="card-body pt-0">
-                            <div class="mb-3">
-                                <label class="fs-6 fw-bold form-label mt-3">
-                                    <option value="">Select Professor..</option>
-                                </label>
-                                <!--end::Label-->
-                                <select required class="form-select form-select-solid dynamic" data-control="select2"
-                                    data-placeholder="Select an option" required data-show-subtext="true"
-                                    name="professor_id" data-live-search="true" id="country" data-dependent="sub">
-                                    <option value=""></option>
-                                    @foreach ($professors as $professor)
-                                        <option value="{{ $professor->id }}" {{ old('professor_id') == $professor->id ? "selected" :""}} >{{ $professor->user->name ?? '' }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
+
                             <div class="mb-3">
                                 <label class="fs-6 fw-bold form-label mt-3">
                                     <span class="required">Add Subjects</span>

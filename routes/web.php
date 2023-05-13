@@ -3,6 +3,10 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostTypeController;
+use App\Http\Controllers\Prof\MaterialSubjectOfProfController;
+use App\Http\Controllers\Prof\PostsOfProfController;
+use App\Http\Controllers\Prof\SubjectAssignmentOfProfController;
+use App\Http\Controllers\Prof\SubjectOfProfController;
 use App\Http\Controllers\ProfessorsController;
 use App\Http\Controllers\ProfessorSubjectsController;
 use App\Http\Controllers\StageController;
@@ -71,8 +75,16 @@ Route::group(['middleware' => ['auth', 'user-access:admin'], 'prefix' => 'admin'
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:prof'])->group(function () {
+Route::group(['middleware' => ['auth', 'user-access:prof'], 'prefix' => 'prof'], function () {
 
-    Route::get('/prof/home', [HomeController::class, 'profHome'])->name('prof.home');
+// Route::middleware(['auth', 'user-access:prof'])->group(function () {
+
+    Route::get('/home', [HomeController::class, 'profHome'])->name('home');
+    Route::resource('professor-subjects', SubjectOfProfController::class);
+    Route::post('/storeDegree',[SubjectOfProfController::class, 'saveDegree'])->name('storeDegree');
+    Route::resource('subject-materials', MaterialSubjectOfProfController::class);
+    Route::resource('subject-assignment', SubjectAssignmentOfProfController::class);
+    Route::resource('posts', PostsOfProfController::class);
+
 });
 

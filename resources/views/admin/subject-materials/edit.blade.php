@@ -92,7 +92,7 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row w-100 flex-md-root">
                                     <!--begin::Label-->
-                                    <label for="file"> Material File <span class="text-danger">*</span> </label>
+                                    <label for="file"> Material File <span class="text-danger">* {{ $row->file_path }}</span> </label>
                                     <input type="file" value="{{ asset('uploads/subject_materials/'.$row->file_path) }}" name="file_path"
                                         class="form-control @error('file_path') is-invalid @enderror">
                                     @error('file_path')
@@ -113,16 +113,14 @@
                             <!--end::Input-->
 
                             <!--begin::Input group-->
-                            <div class="mb-10 fv-row">
-                                <!--begin::Label-->
+                            {{-- <div class="mb-10 fv-row">
                                 <label class="required form-label">upload Date</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
+
                                 <input class="form-control  form-control-solid dPick" name="upload_date" value="{{ $row->upload_date }}"
                                     placeholder="Pick date" id="kt_datepicker_3" />
 
 
-                            </div>
+                            </div> --}}
                             <!--end::Input-->
 
                             <div class="mb-10 fv-row">
