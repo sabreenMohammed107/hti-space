@@ -63,9 +63,9 @@ class PostsOfProfController extends Controller
     {
         $profLogin = Auth::user()->id;
         $profId = Professor::where('user_id', $profLogin)->first();
-        $request->validate([
-            'image' => 'required',
-        ]);
+        // $request->validate([
+        //     'image' => 'required',
+        // ]);
         $input = $request->except(['_token', 'image']);
         if ($request->hasFile('image')) {
             $attach_image = $request->file('image');
@@ -109,9 +109,9 @@ class PostsOfProfController extends Controller
     {
         $profLogin = Auth::user()->id;
         $profId = Professor::where('user_id', $profLogin)->first();
-        $request->validate([
-            'image' => 'required',
-        ]);
+        // $request->validate([
+        //     'image' => 'required',
+        // ]);
         $input = $request->except(['_token', 'image']);
         if ($request->hasFile('image')) {
             $attach_image = $request->file('image');
