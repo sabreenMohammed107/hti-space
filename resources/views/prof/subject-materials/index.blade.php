@@ -117,13 +117,17 @@
         </td>
         <!--end::Qty=-->
         <td class="text-end pe-0" data-order="15">
+
             <span class="fw-bolder ms-3">
             {{$row->upload_date ?? ''}}
-            </span>
+
+            </span></a>
         </td>
         <!--end::Price=-->
 
         <td class="text-end pe-0" data-order="15">
+            <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bolder mb-1"
+            data-kt-ecommerce-category-filter="category_name" >
             <span class="fw-bolder ms-3">
             {{$row->file_path ?? ''}}
             </span>
