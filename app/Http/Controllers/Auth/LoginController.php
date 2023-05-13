@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -55,12 +56,45 @@ class LoginController extends Controller
             }else if (auth()->user()->type == 'prof') {
                 return redirect()->route('prof.home');
             }else{
-                return redirect()->route('home');
+                return redirect()->route('login');
             }
         }else{
             return redirect()->route('login')
                 ->with('error','Email-Address And Password Are Wrong.');
         }
 
+    }
+
+    public function logout(Request $request)
+    {
+        if (auth()->user()->type == 'admin') {
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+
+            // return redirect('manager.home');
+            return redirect()->route('admin.home');
+        } else if (auth()->user()->type == 'prof') {
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+
+            // return redirect('manager.home');
+            return redirect()->route('prof.home');
+        } else {
+            return redirect('/');
+        }
+    }
+    protected function authenticated(Request $request, $user)
+    {
+        if (auth()->user()->type == 'admin') {
+            $redirect = 'admin.home';
+        } else if (auth()->user()->type == 'prof') {
+            $redirect = 'prof.home';
+        } else {
+            // return redirect()->route('home');
+            $redirect = '/';
+        }
+        return redirect($redirect);
     }
 }
