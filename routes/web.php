@@ -79,7 +79,7 @@ Route::group(['middleware' => ['auth', 'user-access:prof'], 'prefix' => 'prof'],
 
 // Route::middleware(['auth', 'user-access:prof'])->group(function () {
 
-    Route::get('/home', [HomeController::class, 'profHome'])->name('home');
+    Route::get('/home', [HomeController::class, 'profHome'])->name('prof.home');
     Route::resource('professor-subjects', SubjectOfProfController::class);
     Route::post('/storeDegree',[SubjectOfProfController::class, 'saveDegree'])->name('storeDegree');
     Route::resource('subject-materials', MaterialSubjectOfProfController::class);
