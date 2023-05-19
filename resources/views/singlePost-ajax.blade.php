@@ -59,7 +59,7 @@
                             <div class="commented-section mt-2">
                                 <div class="d-flex flex-row align-items-center commented-user">
                                     <h5 class="mr-2"><img
-                                        src="{{ asset('uploads/professors') }}/{{ $blog->professor->image ?? 'defult.jpg'  }}" width="40"> {{ $comment->student->user->name ?? '' }}</h5><span
+                                        src="{{ asset('uploads/students') }}/{{ $comment->student->image ?? 'defult.jpg'  }}" width="40"> {{ $comment->student->user->name ?? '' }}</h5><span
                                         class="dot mb-1"></span><span class="mb-1 ml-2">
                                         {{ \Carbon\Carbon::parse($comment->comment_date)->diffForHumans() }}</span>
                                 </div>
