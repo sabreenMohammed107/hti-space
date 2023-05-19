@@ -81,7 +81,7 @@
 
         @yield('breadcrumb')
 
-        <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
+        {{-- <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
             <form action="#" method="get" >
             <div class="input-group">
 
@@ -92,7 +92,7 @@
 
             </div>
         </form>
-        </div>
+        </div> --}}
     </div>
 </div>
 <!-- Header End -->
