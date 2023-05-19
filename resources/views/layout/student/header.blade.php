@@ -46,7 +46,7 @@
         <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
             <div class="navbar-nav mx-auto py-0">
                 <a href="{{ route('/') }}" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
+                {{-- <a href="about.html" class="nav-item nav-link">About</a> --}}
                 <a href="{{ url('user/all/subjects') }}" class="nav-item nav-link">Subjects</a>
                 <a href="{{ url('user/all/posts') }}" class="nav-item nav-link">Posts</a>
                 {{-- <div class="nav-item dropdown">
@@ -58,8 +58,8 @@
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                     </div>
                 </div> --}}
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-                <a href="contact.html" class="nav-item nav-link active">{{Auth::user()->name}}</a>
+                <a href="{{ url('user/contact') }}" class="nav-item nav-link">Contact</a>
+                <a href="#" class="nav-item nav-link active">{{Auth::user()->name}}</a>
 
 
             </div>

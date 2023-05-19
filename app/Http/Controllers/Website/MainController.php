@@ -33,6 +33,10 @@ class MainController extends Controller
         return view('welcome', get_defined_vars());
     }
 
+    public function contact(){
+         return view('contact');
+    }
+
     public function subjects()
     {
         $professors = Professor::all();

@@ -58,6 +58,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('user/single-assignment/{id}',[MainController::class, 'singleAssignment'])->name('single-assignment');
     Route::post('user/upload-solution',[MainController::class,'uploadSolution'] )->name('upload-solution');
     Route::get('user/del-solution/{id}',[MainController::class, 'delSolution'])->name('del-solution');
+    Route::get('user/contact', [MainController::class, 'contact'])->name('user.contact');
 
 });
 
