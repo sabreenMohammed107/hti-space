@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostTypeController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\StudentSubjectsController;
 use App\Http\Controllers\SubjectAssignmentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SubjectMaterialsController;
+use App\Http\Controllers\Website\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,9 +31,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
@@ -40,9 +40,25 @@ Auth::routes();
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
+Route::get('/web-login' , [LoginController::class , 'webLogin'])->name('web-login');
+Route::post('/save-user', [LoginController::class, 'saveLogin'])->name('save-user');
+// Route::group(['middleware' => ['auth', 'user-access:user'], 'prefix' => 'user'], function () {
+
 Route::middleware(['auth', 'user-access:user'])->group(function () {
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/', [MainController::class, 'index'])->name('/');
+    Route::get('user/all/subjects', [MainController::class, 'subjects'])->name('user.all.subjects');
+    Route::get('user/all/posts', [MainController::class, 'posts'])->name('user.all.posts');
+    Route::get('user/add/comment',[MainController::class,'addComment'] )->name('add.comment');
+    Route::post('user/enroll/now',[MainController::class,'enrollNow'] )->name('enroll.now');
+    Route::post('user/cancel/registeration',[MainController::class,'cancelRegisteration'] )->name('cancel.registeration');
+    Route::get('user/single-subject/{id}',[MainController::class, 'singleSubject'])->name('single-subject');
+
+    Route::get('user/single-assignment/{id}',[MainController::class, 'singleAssignment'])->name('single-assignment');
+    Route::post('user/upload-solution',[MainController::class,'uploadSolution'] )->name('upload-solution');
+    Route::get('user/del-solution/{id}',[MainController::class, 'delSolution'])->name('del-solution');
+
 });
 
 /*------------------------------------------

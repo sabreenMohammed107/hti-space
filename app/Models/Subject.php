@@ -15,4 +15,16 @@ class Subject extends Model
     'image',
     'subject_unit'
     ];
+    public function professors()
+    {
+        return $this->belongsToMany(Professor::class, 'professor_subjects');
+    }
+    public function materials()
+    {
+        return $this->hasMany(Subject_material::class);
+    }
+    public function assignments()
+    {
+        return $this->hasMany(Subject_assignment::class);
+    }
 }

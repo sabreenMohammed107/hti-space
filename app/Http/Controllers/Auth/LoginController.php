@@ -66,7 +66,10 @@ class LoginController extends Controller
                 return redirect()->route('admin.home');
             }else if (auth()->user()->type == 'prof') {
                 return redirect()->route('prof.home');
-            }else{
+            }
+
+
+            else{
                 return redirect()->route('login');
             }
         }else{
@@ -79,6 +82,27 @@ class LoginController extends Controller
 
     }
 
+    public function saveLogin(Request $request)
+    {
+        $input = $request->all();
+
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->type == 'user') {
+                return redirect()->to('/');
+
+            }else{
+                return redirect()->route(('web.login'))->withErrors('error','Email-Address And Password Are Wrong.');
+            }
+        }else{
+            return redirect()->back()->with('msg', 'Email-Address And Password Are Wrong.');
+        }
+    }
     public function logout(Request $request)
     {
         if (auth()->user()->type == 'admin') {
@@ -95,8 +119,17 @@ class LoginController extends Controller
 
             // return redirect('manager.home');
             return redirect()->route('prof.home');
-        } else {
-            return redirect('/');
+        }
+        else if (auth()->user()->type == 'user') {
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+
+            return redirect()->route('/');
+        }
+         else {
+
+            return redirect('/web-login');
         }
     }
     protected function authenticated(Request $request, $user)
@@ -107,8 +140,13 @@ class LoginController extends Controller
             $redirect = 'prof.home';
         } else {
             // return redirect()->route('home');
-            $redirect = '/';
+            return redirect('/web-login');
         }
-        return redirect($redirect);
+        return redirect('/web-login');
+    }
+
+    //site login
+    public function webLogin(){
+        return view('auth.webLogin');
     }
 }

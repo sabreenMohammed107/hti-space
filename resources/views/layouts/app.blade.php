@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img alt="Logo" src="{{ asset('img/logo.png') }}" class="max-h-50px logo-default "
+                    <img alt="Logo" src="{{ asset('img/logo.jpg') }}" class="max-h-50px logo-default "
                     style="height: 120px" />
 
                 </a>
