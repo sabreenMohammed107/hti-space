@@ -48,7 +48,9 @@ class SubjectOfProfController extends Controller
      */
     public function create()
     {
-        $professors=Professor::all();
+        $profLogin=Auth::user()->id;
+        $profId=Professor::where('user_id',$profLogin)->first();
+        $professors=Professor::where('id',$profId->id)->get();
         $subjects=Subject::all();
         return view($this->viewName . 'add', compact(['professors','subjects']));
     }
@@ -91,6 +93,19 @@ class SubjectOfProfController extends Controller
         return view($this->viewName . 'degree', compact(['row','degrees']));
     }
 
+    public function editSub(string $id)
+    {
+
+        $profLogin=Auth::user()->id;
+        $profId=Professor::where('user_id',$profLogin)->first();
+        $professors=Professor::where('id',$profId->id)->get();
+        $subjects=Subject::all();
+        $prof=Professor::where('id',$profId->id)->first();
+        $profSubjects=Professor_subject::where('professor_id',$profId->id)->get();
+
+        return view($this->viewName . 'edit', compact(['prof','profSubjects','professors','subjects']));
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -113,7 +128,10 @@ class SubjectOfProfController extends Controller
      */
     public function destroy(string $id)
     {
-        $prof=Professor::where('id',$id)->first();
+        $profLogin=Auth::user()->id;
+        $profId=Professor::where('user_id',$profLogin)->first();
+        $professors=Professor::where('id',$profId)->get;
+        $prof=Professor::where('id',$profId)->first();
         $prof->subjects()->detach();
         return redirect()->back()->with('flash_del', 'Successfully Delete!');
 

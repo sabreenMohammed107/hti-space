@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Champion's Academy" />
-    <meta name="image" content="{{ asset('web-assets/ico/favicon.png') }}" />
-
+    <link href="{{ asset('img/logo.jpg') }}" rel="shortcut icon">
     <!-- fontawesome  -->
     <link rel="stylesheet" href="{{ asset('web-assets/loginandout/all.min.css') }}">
     <!-- fonts google -->
@@ -63,7 +62,7 @@
                   </ul>
                 </div>
                 @endif
-                <form method="POST" class="bg-white rounded shadow-5-strong p-5" action="{{ route('save-register') }}">
+                <form method="POST" class="bg-white rounded shadow-5-strong p-5" enctype="multipart/form-data" action="{{ route('save-register') }}">
                     @csrf
   <!-- Email input -->
   <div class="row mb-3">
@@ -76,6 +75,36 @@
                     <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Email Address</label>
                     <div class="col-md-8">
                   <input type="email" value="{{ old('email') }}" name="email" id="form1Example1" class="form-control" />
+                </div>
+                </div>
+                <!-- Email input -->
+                <div class="row mb-3">
+                    <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Mobile</label>
+                    <div class="col-md-8">
+                  <input type="text" value="{{ old('mobile') }}" name="mobile" id="form1Example1" class="form-control" />
+                </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Stage</label>
+                    <div class="col-md-8">
+                        <select required class="form-select form-select-solid dynamic"
+                        data-control="select2" data-placeholder="Select an option" required
+                        data-show-subtext="true" name="stage_id" data-live-search="true" id="country"
+                        data-dependent="sub">
+                        <option value=""></option>
+                        @foreach ($stages as $stage)
+                            <option value="{{ $stage->id }}" {{ old('stage_id') == $stage->id ? "selected" :""}} >{{ $stage->name ?? '' }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                </div>
+
+                  <!-- Email input -->
+                  <div class="row mb-3">
+                    <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Image</label>
+                    <div class="col-md-8">
+                  <input type="file"  name="image" id="form1Example1" class="form-control" />
                 </div>
                 </div>
                 <!-- Password input -->

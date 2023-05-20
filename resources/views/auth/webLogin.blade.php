@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Champion's Academy" />
-    <meta name="image" content="{{ asset('web-assets/ico/favicon.png') }}" />
-
+    <link href="{{ asset('img/logo.jpg') }}" rel="shortcut icon">
     <!-- fontawesome  -->
     <link rel="stylesheet" href="{{ asset('web-assets/loginandout/all.min.css') }}">
     <!-- fonts google -->

@@ -27,7 +27,7 @@
 
 <!-- CSS -->
 
-
+@yield('style')
 <!-- Script -->
 
         <style type="text/css">

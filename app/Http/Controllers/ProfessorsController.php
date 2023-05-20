@@ -55,7 +55,7 @@ class ProfessorsController extends Controller
         $validator = Validator::make($request->all(), [
 
             'mobile' => ['required', 'min:11', 'max:11', 'regex:/(01)[0-2,5]{1}[0-9]{8}/'],
-            'email' => ['required', 'unique:users'],
+            'email' => ['required', 'unique:users','|regex:/(.*)hti\.edu\.eg$/i'],
             'name' => 'required',
             //    'password' => ['required', 'same:confirm-password'],
 
@@ -67,6 +67,7 @@ class ProfessorsController extends Controller
 
             'email.required' => 'email_required',
             // 'password.required' =>'password_required',
+            'email.regex' => 'regex is invalid',
             'email.unique' => 'email.unique',
             // 'password.same' =>'password_same',
 

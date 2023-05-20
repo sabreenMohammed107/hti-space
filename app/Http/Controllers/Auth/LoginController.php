@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Stage;
 use App\Models\Student;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -112,7 +113,7 @@ public function saveRegister(Request $request){
     $input = $request->all();
 
     $this->validate($request, [
-        'email' => 'required|email',
+        'email' => 'required|email|regex:/(.*)hti\.edu\.eg$/i',
         'password' => 'required|min:8|confirmed',
         'name' => 'required',
     ]);
@@ -134,8 +135,6 @@ public function saveRegister(Request $request){
         $student->image = $this->UplaodImage($attach_image);
     }
     $student->mobile = $request->mobile;
-    $student->address = $request->address;
-    $student->position = $request->position;
     $student->stage_id = $request->stage_id;
     $student->save();
 
@@ -211,6 +210,27 @@ public function saveRegister(Request $request){
     }
 
     public function webRegister(){
-        return view('auth.webRegister');
+        $stages=Stage::all();
+        return view('auth.webRegister',compact('stages'));
+    }
+
+    public function UplaodImage($file_request)
+    {
+        //  This is Image Info..
+        $file = $file_request;
+        $name = $file->getClientOriginalName();
+        $ext = $file->getClientOriginalExtension();
+        $size = $file->getSize();
+        $path = $file->getRealPath();
+        $mime = $file->getMimeType();
+
+        // Rename The Image ..
+        $imageName = $name;
+        $uploadPath = public_path('uploads/students');
+
+        // Move The image..
+        $file->move($uploadPath, $imageName);
+
+        return $imageName;
     }
 }

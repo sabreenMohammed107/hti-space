@@ -37,7 +37,7 @@
                     <form id="comment{{ $index }}"  method="get" >
 
                     <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                            src="{{ asset('uploads/students') }}/{{ $blog->subject->student->image ?? 'defult.jpg' }}" width="40">
+                            src="{{ asset('uploads/students') }}/{{$studId->image ?? 'defult.jpg' }}" width="40">
                         <textarea id="comment_text{{ $index }}" name="comment_text"  class="form-control ml-1 shadow-none textarea"></textarea>
                     </div>
                     <div class="mt-2 text-right">

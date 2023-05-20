@@ -4,7 +4,7 @@
   <div class="toolbar" id="kt_toolbar">
     <div class="container-fluid d-flex flex-stack flex-wrap flex-sm-nowrap">
 
-        @yield('breadcrumb')
+        {{-- @yield('breadcrumb') --}}
 
         <!--begin::Actions-->
         {{-- <div class="d-flex align-items-center flex-nowrap text-nowrap py-1">

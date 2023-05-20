@@ -60,7 +60,7 @@
                     <div class="card-toolbar">
                         <!--begin::Add customer-->
                       	<!--begin::Add product-->
-											{{-- <a href="{{ route('professor-subjects.create') }}" class="btn btn-primary">Add Professor Subjects</a> --}}
+											<a href="{{ route('professor-subjects.create') }}" class="btn btn-primary">Add Professor Subjects</a>
 											<!--end::Add product-->
 
                         <!--end::Add customer-->
@@ -179,6 +179,11 @@
                         class="menu-link px-3">Students</a>
                 </div>
                 <!--end::Menu item-->
+
+                <div class="menu-item px-3">
+                    <a href="{{ route('editSub', $row->id) }}"
+                        class="menu-link px-3">Edit</a>
+                </div>
                  <!--begin::Menu item-->
 
                 <!--end::Menu item-->
