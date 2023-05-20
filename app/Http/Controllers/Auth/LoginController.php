@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -103,6 +107,62 @@ class LoginController extends Controller
             return redirect()->back()->with('msg', 'Email-Address And Password Are Wrong.');
         }
     }
+
+public function saveRegister(Request $request){
+    $input = $request->all();
+
+    $this->validate($request, [
+        'email' => 'required|email',
+        'password' => 'required|min:8|confirmed',
+        'name' => 'required',
+    ]);
+    DB::beginTransaction();
+    try {
+        // Disable foreign key checks!
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+   $user= User::create([
+        'name' => $input['name'],
+        'email' => $input['email'],
+        'type' => 0,
+        'password' => Hash::make($input['password']),
+    ]);
+    $student = new Student();
+    $student->user_id = $user->id;
+    if ($request->hasFile('image')) {
+        $attach_image = $request->file('image');
+
+        $student->image = $this->UplaodImage($attach_image);
+    }
+    $student->mobile = $request->mobile;
+    $student->address = $request->address;
+    $student->position = $request->position;
+    $student->stage_id = $request->stage_id;
+    $student->save();
+
+    DB::commit();
+    // Enable foreign key checks!
+    DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+    if(auth()->attempt(array('email' => $input['email'], 'password' =>$input['password'])))
+    {
+        if (auth()->user()->type == 'user') {
+            return redirect()->to('/');
+
+        }else{
+            return redirect()->route(('web.login'))->withErrors('error','Email-Address And Password Are Wrong.');
+        }
+    }else{
+        return redirect()->back()->with('msg', 'Email-Address And Password Are Wrong.');
+    }
+
+} catch (\Throwable $e) {
+    // throw $th;
+    DB::rollback();
+    return redirect()->back()->withInput()->withErrors($e->getMessage());
+    // return redirect()->back()->withInput()->withErrors('حدث خطأ فى ادخال البيانات قم بمراجعتها مرة اخرى');
+}
+}
+
+
     public function logout(Request $request)
     {
         if (auth()->user()->type == 'admin') {
@@ -148,5 +208,9 @@ class LoginController extends Controller
     //site login
     public function webLogin(){
         return view('auth.webLogin');
+    }
+
+    public function webRegister(){
+        return view('auth.webRegister');
     }
 }

@@ -85,7 +85,7 @@ class StudentsController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'type' => 2,
+                'type' => 0,
                 'password' => Hash::make('12345678'),
             ]);
 

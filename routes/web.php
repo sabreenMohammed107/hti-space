@@ -41,7 +41,10 @@ All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::get('/web-login' , [LoginController::class , 'webLogin'])->name('web-login');
+Route::get('/web-register' , [LoginController::class , 'webRegister'])->name('web-register');
 Route::post('/save-user', [LoginController::class, 'saveLogin'])->name('save-user');
+Route::post('/save-register', [LoginController::class, 'saveRegister'])->name('save-register');
+
 // Route::group(['middleware' => ['auth', 'user-access:user'], 'prefix' => 'user'], function () {
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {

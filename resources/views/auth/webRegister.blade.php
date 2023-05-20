@@ -40,15 +40,13 @@
                 <div class="mb-5">
                     <img style="width:150px !important;height:150px !important"
                         src="{{ asset('img/logo.jpg') }}" alt="" srcset="">
-                    <h5 class="text-center">Login Now</h5>
-                    <a href="{{ route('web-register') }}"> {{ __('Make New Account') }} </a>
+                    <h5 class="text-center">Sign up Now</h5>
+                    <a href="{{ route('web-login') }}"> {{ __('Have An Acount ?') }} </a>
 
                 </div>
                 @if(count($errors) > 0 )
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+
                   <ul class="p-0 m-0" style="list-style: none;">
                     @foreach($errors->all() as $error)
                     <li>{{$error}}</li>
@@ -58,32 +56,42 @@
                 @endif
                 @if (\Session::has('msg'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+
                   <ul class="p-0 m-0" style="list-style: none;">
                     <li>{!! \Session::get('msg') !!}</li>
 
                   </ul>
                 </div>
                 @endif
-                <form method="POST" class="bg-white rounded shadow-5-strong p-5" action="{{ route('save-user') }}">
+                <form method="POST" class="bg-white rounded shadow-5-strong p-5" action="{{ route('save-register') }}">
                     @csrf
-
+  <!-- Email input -->
+  <div class="row mb-3">
+    <label for="form1Example3" class="col-md-3 col-form-label text-md-start">User Name</label>
+    <div class="col-md-8">
+  <input type="text" name="name" value="{{ old('name') }}" id="form1Example3" class="form-control" />
+</div></div>
                 <!-- Email input -->
-                <div class="mb-3 text-start">
-                    <label for="form1Example1" class="form-label">Email Address</label>
-
-                  <input type="email" name="email" id="form1Example1" class="form-control" />
+                <div class="row mb-3">
+                    <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Email Address</label>
+                    <div class="col-md-8">
+                  <input type="email" value="{{ old('email') }}" name="email" id="form1Example1" class="form-control" />
                 </div>
-
+                </div>
                 <!-- Password input -->
-                <div class="mb-3 text-start">
-                    <label for="form1Example2" class="form-label">Password</label>
-
+                <div class="row mb-3">
+                    <label for="form1Example2" class="col-md-3 col-form-label text-md-start">Password</label>
+                    <div class="col-md-8">
                   <input type="password" name="password" id="form1Example2" class="form-control" />
                 </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="password-confirm" class="col-md-3 col-form-label text-md-start">{{ __('Confirm Password') }}</label>
 
+                    <div class="col-md-8">
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    </div>
+                </div>
                 <!-- 2 column grid layout for inline styling -->
                 <div class="row mb-4">
                   <div class="col d-flex justify-content-center">
