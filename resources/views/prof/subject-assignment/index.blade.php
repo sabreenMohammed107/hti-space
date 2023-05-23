@@ -176,6 +176,11 @@
                     <a href="{{ route('subject-assignment.show', $row->id) }}"
                         class="menu-link px-3">Solutions</a>
                 </div>
+                <div class="menu-item px-3">
+                    <a  target="_blank" href="{{ route('repoSolution', $row->id) }}"
+                        class="menu-link px-3">Report</a>
+                </div>
+
                  <!--begin::Menu item-->
                  <div class="menu-item px-3">
                     <a href="#" class="menu-link px-3"

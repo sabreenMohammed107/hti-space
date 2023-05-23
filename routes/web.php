@@ -109,6 +109,7 @@ Route::group(['middleware' => ['auth', 'user-access:prof'], 'prefix' => 'prof'],
     Route::resource('posts', PostsOfProfController::class);
     Route::post('/solutionDegree',[SubjectAssignmentOfProfController::class, 'solutionDegree'])->name('solutionDegree');
     Route::get('editSub/{id}',[SubjectOfProfController::class, 'editSub'])->name('editSub');
+    Route::get('repoSolution/{id}',[SubjectAssignmentOfProfController::class, 'repo'])->name('repoSolution');
 
 });
 

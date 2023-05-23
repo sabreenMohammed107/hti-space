@@ -13,6 +13,8 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use File;
+use Mccarlosen\LaravelMpdf\Facades\LaravelMpdf as PDF;
+
 class SubjectAssignmentOfProfController extends Controller
 {
     protected $object;
@@ -94,6 +96,25 @@ class SubjectAssignmentOfProfController extends Controller
         return view($this->viewName . 'degree', compact(['row','degrees']));
     }
 
+    public function repo(string $id)
+    {
+        $row=Subject_assignment::where('id',$id)->first();
+        $degrees=Assignment_solution::where('assignment_id',$id)->get();
+        // $students = Student::orderBy("created_at", "Desc")->get();
+
+        $data = [
+            'degrees' => $degrees,
+            'Title' =>' Student Report',
+            'Today' => date('Y-m-d'),
+            'User'  =>  Auth::user(),
+        ];
+        $pdf = PDF::loadView('prof.subject-assignment.report', $data);
+        $pdf->allow_charset_conversion = false;
+        $pdf->autoScriptToLang = true;
+        $pdf->autoLangToFont = true;
+        return $pdf->stream('student.pdf');
+        return view($this->viewName . 'report', compact(['row','degrees']));
+    }
     /**
      * Show the form for editing the specified resource.
      */
@@ -214,4 +235,6 @@ class SubjectAssignmentOfProfController extends Controller
     }
     return redirect()->back()->with('flash_del', 'update done successfully!');
     }
+
+
 }

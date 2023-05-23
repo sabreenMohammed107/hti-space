@@ -174,24 +174,26 @@ tbody tr td{
     <table dir="rtl" style="background-color: #020f57;color:#fff;width:100%;">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Student</th>
-                <th>Email</th>
-                <th>phone</th>
-                <th>Stage</th>
+                <th> #</th>
+                <th> Student</th>
+                <th> solution date </th>
+                <th> solution file </th>
+                <th> description </th>
+                <th> degree pct %</th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach ($students as $i => $student)
+            @foreach ($degrees as $i => $degree)
                 <tr>
                     <td style="padding: 10px;">{{++$i}}</td>
 
-                    <td>{{$student->user->name ?? ''}}</td>
-                    <td>{{$student->user->email}}</td>
-                    <td>{{$student->mobile}}</td>
+                    <td>{{ $degree->student->user->name ?? '' }}</td>
+                    <td> {{ $degree->solution_date }}</td>
+                    <td>{{ $degree->attach_image }}</td>
 
-                    <td>{{$student->stage->name ?? ''}}</td>
+                    <td>{{ $degree->description }}</td>
+                    <td>{{ $degree->degree_pct }}</td>
                 </tr>
             @endforeach
         </tbody>
