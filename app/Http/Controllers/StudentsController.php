@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use File;
+use Illuminate\Support\Facades\Auth;
+use Mccarlosen\LaravelMpdf\Facades\LaravelMpdf as PDF;
 class StudentsController extends Controller
 {
 
@@ -121,7 +123,22 @@ class StudentsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $students = Student::orderBy("created_at", "Desc")->get();
+
+        $Company=Student::where('id',1)->first();
+        $data = [
+            'students' => $students,
+            'Title' =>' Student Report',
+            'Today' => date('Y-m-d'),
+            'Logo'  => $Company->company_logo,
+            'Company' => $Company,
+            'User'  =>  Auth::user(),
+        ];
+        $pdf = PDF::loadView('admin.students.report', $data);
+        $pdf->allow_charset_conversion = false;
+        $pdf->autoScriptToLang = true;
+        $pdf->autoLangToFont = true;
+        return $pdf->stream('student.pdf');
     }
 
     /**
