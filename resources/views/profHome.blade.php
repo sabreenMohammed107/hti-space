@@ -85,7 +85,7 @@
             <div class="col-xl-6 col-md-12">
                 <div class="ms-panel">
                     <div class="ms-panel-header">
-                        <h6>Last Students</h6>
+                        <h6>Subjects</h6>
                     </div>
                     <div class="ms-panel-body p-0">
                         <div class="table-responsive">
@@ -93,9 +93,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th scope="col">Student name</th>
-                                        <th scope="col">Phone</th>
-                                        <th scope="col">Email</th>
+                                        <th scope="col">code</th>
+                                        <th scope="col"> name</th>
+
+                                        <th scope="col">unit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -105,9 +106,10 @@
                                     @foreach ($subjectsTable as $r)
                                         <tr>
                                         <td>{{ $i }}</td>
-                                        <td class="ms-table-f-w"> {{ $r->user->name ?? '' }}</td>
-                                        <td>{{ $r->mobile}}</td>
-                                        <td>{{ $r->user->email ?? '' }}</td>
+                                        <td>{{ $r->code}}</td>
+                                        <td class="ms-table-f-w"> {{ $r->name ?? '' }}</td>
+
+                                        <td>{{ $r->unit ?? '' }}</td>
                                     </tr>
                                     @php
                                         $i++

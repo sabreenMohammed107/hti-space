@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Assignment_solution;
 use App\Models\Post;
 use App\Models\Professor;
+use App\Models\Professor_subject;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Subject_assignment;
@@ -60,7 +61,15 @@ class HomeController extends Controller
         $subjects=Subject::all()->count();
         $students=Student::all()->count();
         $posts=Post::all()->count();
-        $subjectsTable=Student::take(10)->get();
+
+        $profLogin = Auth::user()->id;
+        $profId = Professor::where('user_id', $profLogin)->first();
+        $ids = Professor_subject::where('professor_id', $profId->id)->pluck('subject_id');
+
+        $subjectsTable = Subject::whereIn('id', $ids)->orderBy("created_at", "Desc")->get();
+
+
+        // $subjectsTable=Student::take(10)->get();
         $postsTable=Post::take(10)->get();
 
 
