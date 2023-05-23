@@ -29,7 +29,7 @@
             <div class="card-header my-5">{{ __('Dashboard') }}</div>
         <div class="row mb-3">
 
-            <div class="col-xl-3 col-md-6">
+            {{-- <div class="col-xl-3 col-md-6">
                 <div class="ms-card card-gradient-success ms-widget ms-infographics-widget" style="position: relative">
                     <div class="ms-card-body media">
                         <div class="media-body">
@@ -40,9 +40,9 @@
                     </div>
                     <i class="flaticon-statistics"></i>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-6 col-md-6">
                 <div class="ms-card card-gradient-secondary ms-widget ms-infographics-widget" style="position: relative">
                     <div class="ms-card-body media">
                         <div class="media-body">
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-md-6">
+            {{-- <div class="col-xl-3 col-md-6">
                 <div class="ms-card card-gradient-warning ms-widget ms-infographics-widget" style="position: relative">
                     <div class="ms-card-body media">
                         <div class="media-body">
@@ -67,9 +67,9 @@
                     </div>
                     <i class="flaticon-user"></i>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-6 col-md-6">
                 <div class="ms-card card-gradient-info ms-widget ms-infographics-widget" style="position: relative" >
                     <div class="ms-card-body media">
                         <div class="media-body">

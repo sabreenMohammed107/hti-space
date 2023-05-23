@@ -57,17 +57,16 @@ class HomeController extends Controller
      */
     public function profHome()
     {
-        $professors=Professor::all()->count();
-        $subjects=Subject::all()->count();
-        $students=Student::all()->count();
-        $posts=Post::all()->count();
+        // $professors=Professor::all()->count();
+        // $students=Student::all()->count();
 
         $profLogin = Auth::user()->id;
         $profId = Professor::where('user_id', $profLogin)->first();
         $ids = Professor_subject::where('professor_id', $profId->id)->pluck('subject_id');
 
         $subjectsTable = Subject::whereIn('id', $ids)->orderBy("created_at", "Desc")->get();
-
+        $subjects=Subject::whereIn('id', $ids)->orderBy("created_at", "Desc")->get()->count();
+        $posts = Post::where('professor_id',$profId->id)->orderBy("created_at", "Desc")->get()->count();
 
         // $subjectsTable=Student::take(10)->get();
         $postsTable=Post::take(10)->get();
