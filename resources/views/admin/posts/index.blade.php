@@ -176,7 +176,18 @@
                         class="menu-link px-3">show</a>
                 </div>
                 <!--end::Menu item-->
+                <div class="menu-item px-3">
+                    <a href="#" class="menu-link px-3"
+                        data-kt-ecommerce-category-filter="delete_row">Delete</a>
 
+
+        <form id="delete_{{$row->id}}" action="{{ route('all-posts.destroy', $row->id) }}"  method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+
+        <button type="submit" value=""></button>
+        </form>
+                </div>
             </div>
             <!--end::Menu-->
         </td>

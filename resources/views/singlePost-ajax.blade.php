@@ -8,7 +8,7 @@
                 <div class="d-flex flex-row user-info"><img class="rounded-circle"
                         src="{{ asset('uploads/professors') }}/{{ $blog->professor->image ?? 'defult.jpg'  }}" width="40">
                     <div class="d-flex flex-column justify-content-start ml-2"><span
-                            class="d-block font-weight-bold name">{{ $blog->title }}</span><span
+                            class="d-block font-weight-bold name">{{ $blog->title }} - {{ $blog->subject->name ?? '' }}</span><span
                             class="date text-black-50">{{ $blog->professor->user->name ?? '' }} -
                             {{ $blog->post_date }} - {{ $blog->type->type ??'' }} </span></div>
                 </div>

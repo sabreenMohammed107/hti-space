@@ -102,10 +102,12 @@ class LoginController extends Controller
                 return redirect()->to('/');
 
             }else{
-                return redirect()->route(('web.login'))->withErrors('error','Email-Address And Password Are Wrong.');
+                Auth::guard('web')->logout();
+                $request->session()->invalidate();
+                return redirect('/web-login')->withErrors('error','Email-Address And Password Are Wrong.');
             }
         }else{
-            return redirect()->back()->with('msg', 'Email-Address And Password Are Wrong.');
+            return redirect('/web-login')->with('msg', 'Email-Address And Password Are Wrong.');
         }
     }
 
@@ -144,13 +146,18 @@ public function saveRegister(Request $request){
     if(auth()->attempt(array('email' => $input['email'], 'password' =>$input['password'])))
     {
         if (auth()->user()->type == 'user') {
-            return redirect()->to('/');
+
+             return redirect()->to('/');
 
         }else{
-            return redirect()->route(('web.login'))->withErrors('error','Email-Address And Password Are Wrong.');
+
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+             return redirect()->route(('web.login'))->withErrors('error','Email-Address And Password Are Wrong.');
         }
     }else{
-        return redirect()->back()->with('msg', 'Email-Address And Password Are Wrong.');
+
+     return redirect()->back()->with('msg', 'Email-Address And Password Are Wrong.');
     }
 
 } catch (\Throwable $e) {

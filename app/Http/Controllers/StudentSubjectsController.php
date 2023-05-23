@@ -26,7 +26,11 @@ class StudentSubjectsController extends Controller
     }
     public function index()
     {
-        $rows = Student_subject::orderBy("created_at", "Desc")->get();
+        $ids= Student_subject::orderBy("created_at", "Desc") ->distinct()
+        ->get('student_id');
+
+        $rows = Student_subject::whereIn('student_id',$ids)->orderBy("created_at", "Desc")->get();
+
 
         return view($this->viewName . 'index', compact(['rows']));
     }

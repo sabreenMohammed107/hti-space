@@ -217,7 +217,9 @@
                     <ul class="list-group list-group-flush">
                         @foreach ($subject->assignments as $index=>$assignment)
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                            <a href="{{ url('user/single-assignment/'.$assignment->id) }}" class="text-decoration-none h6 m-0">{{empty($assignment->title)? 'No Title':$assignment->title }}</a>
+                            <a href="{{ url('user/single-assignment/'.$assignment->id) }}" class="text-decoration-none h6 m-0">{{ str_limit($assignment->assignment, $limit = 50, $end = '...') }}
+                                 {{-- {{empty($assignment->assignment)? 'No Title':$assignment->assignment }} --}}
+                                </a>
                             <span class="badge  badge-pill">assignment / {{ $assignment->assignment_date }}</span>
                             <a download="dawnload" href="{{ asset('uploads/subject_assignments') }}/{{ $assignment->file_attach ?? ' ' }}" class="text-decoration-none h6 m-0">{{ $assignment->file_attach }}</a>
                             <span class="badge  badge-pill">deadline / {{ $assignment->deadline_date }}</span>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Champion's Academy" />
-    <link href="{{ asset('img/logo.jpg') }}" rel="shortcut icon">
+    <link href="{{ asset('img/logo.png') }}" rel="shortcut icon">
     <!-- fontawesome  -->
     <link rel="stylesheet" href="{{ asset('web-assets/loginandout/all.min.css') }}">
     <!-- fonts google -->
@@ -38,7 +38,7 @@
             <div class=" slider_details side_right_details">
                 <div class="mb-5">
                     <img style="width:150px !important;height:150px !important"
-                        src="{{ asset('img/logo.jpg') }}" alt="" srcset="">
+                        src="{{ asset('img/logo.png') }}" alt="" srcset="">
                     <h5 class="text-center">Sign up Now</h5>
                     <a href="{{ route('web-login') }}"> {{ __('Have An Acount ?') }} </a>
 

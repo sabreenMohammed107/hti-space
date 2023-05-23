@@ -113,7 +113,7 @@
                                             data-allow-clear="true">
                                             <option value=""></option>
                                             @foreach ($subjects as $subject)
-                                            <option value=" {{ $subject->id }}" selected>{{ $subject->name ?? '' }}
+                                            <option value=" {{ $subject->id }}" {{ $subject->id == $row->subject_id  ? 'selected' : '' }}>{{ $subject->name ?? '' }}
                                             @endforeach
                                             </option>
 
@@ -126,11 +126,13 @@
 
                                         </label>
                                         <!--end::Label-->
-                                        <select required class="form-select form-select-solid" name="subject_id"
+                                        <select required class="form-select form-select-solid" name="post_type_id "
                                             data-control="select2" data-placeholder="Select an option"
                                             data-allow-clear="true">
                                             <option value=""></option>
-                                            <option value=" " selected>{{ $row->type->type ?? '' }}
+                                            @foreach ($types as $type)
+                                            <option value=" {{ $type->id }}" {{ $type->id == $row->post_type_id  ? 'selected' : '' }}>{{ $type->type ?? '' }}
+                                            @endforeach
                                             </option>
 
                                         </select>

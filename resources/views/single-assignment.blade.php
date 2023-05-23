@@ -20,7 +20,7 @@
                         <div class="section-title position-relative mb-5">
                             <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Assignment Detail
                             </h6>
-                            <h1 class="display-4">{{ empty($assignment->title) ? 'No Title' : $assignment->title }}</h1>
+                            <p >{{ empty($assignment->assignment) ? 'No Title' : $assignment->assignment }}</p>
                         </div>
                         <img style="height: 350px" class="img-fluid rounded w-100 mb-4"
                             src="{{ asset('uploads/subject_assignments') }}/{{ $assignment->image ?? ' ' }}" alt="Image">

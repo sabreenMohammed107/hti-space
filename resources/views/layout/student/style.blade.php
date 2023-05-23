@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-    <link href="{{ asset('img/logo.jpg') }}" rel="shortcut icon">
+    <link href="{{ asset('img/logo.png') }}" rel="shortcut icon">
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 

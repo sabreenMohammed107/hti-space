@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-
+use File;
+use Illuminate\Database\QueryException;
 class PostsController extends Controller
 {
     protected $object;
@@ -77,6 +78,21 @@ class PostsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $row = Post::where('id', $id)->first();
+        // Delete File ..
+        $file = $row->image;
+        $file_name = public_path('uploads/post/' . $file);
+        try {
+            File::delete($file_name);
+
+            $row->comments()->delete();
+           $row->delete();
+           return redirect()->back()->with('flash_del', 'Successfully Delete!');
+
+       } catch (QueryException $q) {
+           // return redirect()->back()->withInput()->with('flash_danger', $q->getMessage());
+           return redirect()->back()->withInput()->with('flash_danger', 'Can’t delete This Row
+           Because it related with another table');
+       }
     }
 }

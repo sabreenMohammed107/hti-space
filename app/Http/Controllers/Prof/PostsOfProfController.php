@@ -137,7 +137,7 @@ class PostsOfProfController extends Controller
          try {
              File::delete($file_name);
 
-
+             $row->comments()->delete();
             $row->delete();
             return redirect()->back()->with('flash_del', 'Successfully Delete!');
 

@@ -63,7 +63,7 @@ class SubjectOfProfController extends Controller
         $prof=Professor::where('id',$request->get('professor_id'))->first();
         if (!empty($request->get('subjects'))) {
 
-            $prof->subjects()->attach($request->subjects);
+            $prof->subjects()->syncWithoutDetaching($request->subjects);
             return redirect()->route($this->routeName.'index')->with('flash_del', 'Successfully Saved!  ');
 
         }else{
