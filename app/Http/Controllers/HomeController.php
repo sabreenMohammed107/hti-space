@@ -57,8 +57,8 @@ class HomeController extends Controller
      */
     public function profHome()
     {
-        // $professors=Professor::all()->count();
-        // $students=Student::all()->count();
+        $professors=Professor::all()->count();
+        $students=Student::all()->count();
 
         $profLogin = Auth::user()->id;
         $profId = Professor::where('user_id', $profLogin)->first();
