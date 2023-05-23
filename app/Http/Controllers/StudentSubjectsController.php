@@ -26,7 +26,7 @@ class StudentSubjectsController extends Controller
     }
     public function index()
     {
-        $ids= Student_subject::orderBy("created_at", "Desc") ->distinct()
+        $ids= Student_subject::orderBy("created_at", "Desc")->distinct()
         ->get('student_id');
 
         $rows = Student_subject::whereIn('student_id',$ids)->orderBy("created_at", "Desc")->get();
