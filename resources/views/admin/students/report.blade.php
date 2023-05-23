@@ -37,7 +37,7 @@ html,body,.body{
     width: 20%;
     font-size: 10px;
     text-align: center;
-    background: #02572f;
+    background: #020f57;
     color: #fff;
     float: left;
 }
@@ -46,7 +46,7 @@ html,body,.body{
     width: 20%;
     font-size: 10px;
     text-align: center;
-    background: #02572f;
+    background: #020f57;
     color: #fff;
 }
 .report-header{
@@ -67,7 +67,7 @@ html,body,.body{
     clear: both;
     padding: 5px 50px 30px 10px;
 
-    /* background: #02572f; */
+    /* background: #020f57; */
 }
 .company{
     width: 100%;
@@ -94,7 +94,7 @@ html,body,.body{
     font-size: 12px;
     text-align: center;
     margin: 10px auto;
-    background: #02572f;
+    background: #020f57;
     color: #fff;
     clear: both;
 }
@@ -171,7 +171,7 @@ tbody tr td{
             </div>
         </span>
     </div>
-    <table dir="rtl" style="background-color: #02572f;color:#fff;width:100%;">
+    <table dir="rtl" style="background-color: #020f57;color:#fff;width:100%;">
         <thead>
             <tr>
                 <th>#</th>

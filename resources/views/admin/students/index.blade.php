@@ -60,8 +60,8 @@
                     <div class="card-toolbar">
                         <!--begin::Add customer-->
                       	<!--begin::Add product-->
-											<a href="{{ route('students.show',1) }}" class="btn btn-primary mx-2">Add Student</a>
-                                            <a href="{{ route('students.create') }}" class="btn btn-primary"> Student Report</a>
+											<a href="{{ route('students.create') }}" class="btn btn-primary mx-2">Add Student</a>
+                                            <a href="{{ route('students.show',1) }}" target="_blank" class="btn btn-primary"> Student Report</a>
 
 
                                             <!--end::Add product-->
