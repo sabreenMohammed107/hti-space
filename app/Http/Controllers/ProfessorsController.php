@@ -8,8 +8,8 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use File;
+use Illuminate\Support\Facades\Validator;
 
 class ProfessorsController extends Controller
 {
@@ -55,7 +55,7 @@ class ProfessorsController extends Controller
         $validator = Validator::make($request->all(), [
 
             'mobile' => ['required', 'min:11', 'max:11', 'regex:/(01)[0-2,5]{1}[0-9]{8}/'],
-            'email' => ['required', 'unique:users','|regex:/(.*)hti\.edu\.eg$/i'],
+            'email' => ['required', 'unique:users','regex:/(.*)hti\.edu\.eg$/i'],
             'name' => 'required',
             //    'password' => ['required', 'same:confirm-password'],
 
