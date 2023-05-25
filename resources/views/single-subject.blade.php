@@ -113,7 +113,7 @@
 
                             // prepare once
                             $indexed = [];
-                            foreach ($mySubjects as $object) {
+                            foreach ($mySubjects as $index=>$object) {
                                 $indexed[$object->subject_id] = $object;
                             }
 
