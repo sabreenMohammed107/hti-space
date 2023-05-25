@@ -71,7 +71,7 @@
     <div class="container mt-5 pt-5">
         <div class="row">
             <div class="col-md-6 mb-5">
-                <a href="index.html" class="navbar-brand">
+                <a href="#" class="navbar-brand">
                     <h1 class="mt-n2 text-uppercase text-white"></i><i class="fa fa-planet-ringed mr-3"></i>Space</h1>
                 </a>
                 <p class="m-0">Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem at et diam est, tempor rebum ipsum sit ea tempor stet et consetetur dolores. Justo stet diam ipsum lorem vero clita diam</p>

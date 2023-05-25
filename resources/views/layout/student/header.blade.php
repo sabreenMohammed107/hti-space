@@ -35,7 +35,7 @@
 <!-- Navbar Start -->
 <div class="container-fluid p-0">
     <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand ml-lg-3">
+        <a href="{{ route('/') }}" class="navbar-brand ml-lg-3">
             <img alt="Logo" src="{{ asset('img/logo.png') }}" class="max-h-50px logo-default "
             style="height: 80px" />
             {{-- <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-3"></i>Edukate</h1> --}}
