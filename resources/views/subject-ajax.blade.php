@@ -106,7 +106,7 @@
     <div class="mb-5">
         <h2 class="mb-4">My Subject</h2>
         @foreach ($mySubjects as $mySubject)
-            <a class="d-flex align-items-center text-decoration-none mb-4" href="">
+            <a class="d-flex align-items-center text-decoration-none mb-4" href="{{ url('user/single-subject/'.$mySubject->subject->id) }}">
                 <img class="img-fluid rounded" style="width:80px;height:80px"
                     src="{{ asset('uploads/subjects') }}/{{ $mySubject->subject->image ?? 'defult.png' }}"
                     alt="">
