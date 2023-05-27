@@ -118,7 +118,10 @@ public function saveRegister(Request $request){
         'email' => 'required|email|regex:/(.*)hti\.edu\.eg$/i',
         'password' => 'required|min:8|confirmed',
         'name' => 'required',
-    ]);
+    ],
+[
+    'email.regex'=>'email must be example@hti.edu.eg'
+]);
     DB::beginTransaction();
     try {
         // Disable foreign key checks!
