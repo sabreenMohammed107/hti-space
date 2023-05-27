@@ -864,7 +864,7 @@ $prof=App\Models\Professor::where('user_id',Auth::user()->id)->first();
                             <!--end::Menu separator-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-5">
-                                <a href="{{ url('/admin/myProfile/'.Auth::user()->id) }}" class="menu-link px-5">My Profile</a>
+                                <a href="{{ url('/prof/profProfile/'.Auth::user()->id) }}" class="menu-link px-5">My Profile</a>
                             </div>
                             <!--end::Menu item-->
                             <!--begin::Menu item-->

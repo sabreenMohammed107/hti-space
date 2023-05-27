@@ -89,6 +89,9 @@ Route::group(['middleware' => ['auth', 'user-access:admin'], 'prefix' => 'admin'
     Route::resource('student-subjects', StudentSubjectsController::class);
     Route::resource('student-solutions', StudentSolutionsController::class);
     Route::resource('all-posts', PostsController::class);
+    Route::get('myProfile/{id}',[HomeController::class, 'myAdminProfile'])->name('myProfile');
+//saveProfile
+Route::post('saveProfile',[HomeController::class, 'saveAdminProfile'])->name('saveProfile');
 
 });
 
@@ -110,6 +113,8 @@ Route::group(['middleware' => ['auth', 'user-access:prof'], 'prefix' => 'prof'],
     Route::post('/solutionDegree',[SubjectAssignmentOfProfController::class, 'solutionDegree'])->name('solutionDegree');
     Route::get('editSub/{id}',[SubjectOfProfController::class, 'editSub'])->name('editSub');
     Route::get('repoSolution/{id}',[SubjectAssignmentOfProfController::class, 'repo'])->name('repoSolution');
+    Route::get('profProfile/{id}',[HomeController::class, 'profProfile'])->name('profProfile');
+    Route::post('saveProfProfile',[HomeController::class, 'saveProfile'])->name('saveProfProfile');
 
 });
 
