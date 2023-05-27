@@ -32,19 +32,20 @@
 
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <div class="bg-primary mb-5 py-3">
-                        <h3 class="text-white py-3 px-4 m-0">Course Features</h3>
+                        <h3 class="text-white py-3 px-4 m-0">Assignment Features</h3>
+
                         <div class="d-flex justify-content-between border-bottom px-4">
                             <h6 class="text-white my-3">Instructor</h6>
                             <h6 class="text-white my-3">{{ $assignment->professor->user->name ?? '' }}</h6>
                         </div>
 
                         <div class="d-flex justify-content-between border-bottom px-4">
-                            <h6 class="text-white my-3">Units</h6>
-                            <h6 class="text-white my-3">{{ $assignment->subject->subject_unit }}</h6>
+                            <h6 class="text-white my-3">Subject</h6>
+                            <h6 class="text-white my-3">{{ $assignment->subject->name }}</h6>
                         </div>
                         <div class="d-flex justify-content-between border-bottom px-4">
-                            <h6 class="text-white my-3">Code</h6>
-                            <h6 class="text-white my-3">{{ $assignment->subject->code }}</h6>
+                            <h6 class="text-white my-3">deadline</h6>
+                            <h6 class="text-white my-3">{{ $assignment->deadline_date }}</h6>
                         </div>
 
 
@@ -62,7 +63,9 @@
                             @isset($solutions[0])
                             @if ($solutions[0]->degree_pct) disabled @endif
                             @endisset
-
+                            @if ($assignment->deadline_date < now()->format('Y-m-d'))
+                            disabled
+                            @endif
                              name="attach_image" type="file" onchange="javascript:this.form.submit();" />
                             </form>
                         </div>
