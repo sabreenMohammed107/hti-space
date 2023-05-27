@@ -115,7 +115,7 @@ public function saveRegister(Request $request){
     $input = $request->all();
 
     $this->validate($request, [
-        'email' => 'required|email|regex:/(.*)hti\.edu\.eg$/i',
+        'email' => 'required|unique:users|email|regex:/(.*)hti\.edu\.eg$/i',
         'password' => 'required|min:8|confirmed',
         'name' => 'required',
     ],
