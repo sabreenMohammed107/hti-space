@@ -10,7 +10,8 @@
                         </div>
                         <div class="mt-n1">
                             <h4>Our Location</h4>
-                            <p class="m-0">123 Street, New York, USA</p>
+                            <p class="m-0">Next to Small Industries Complex, Industrial Area2.
+                                , Zagazig, Egypt</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-5">
@@ -19,7 +20,7 @@
                         </div>
                         <div class="mt-n1">
                             <h4>Call Us</h4>
-                            <p class="m-0">+012 345 6789</p>
+                            <p class="m-0">055 4351292</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
@@ -28,7 +29,7 @@
                         </div>
                         <div class="mt-n1">
                             <h4>Email Us</h4>
-                            <p class="m-0">info@example.com</p>
+                            <p class="m-0">support@hti.edu.eg</p>
                         </div>
                     </div>
                 </div>
@@ -91,34 +92,33 @@
         <div class="row">
             <div class="col-md-4 mb-5">
                 <h3 class="text-white mb-4">Get In Touch</h3>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Next to Small Industries Complex, Industrial Area2.
+                    , Zagazig, Egypt</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>055 4351292</p>
+                <p><i class="fa fa-envelope mr-2"></i>support@hti.edu.eg</p>
                 <div class="d-flex justify-content-start mt-4">
                     <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-twitter"></i></a>
-                    <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-facebook-f"></i></a>
+                    <a class="text-white mr-4" href="https://www.facebook.com/HTI.EGY?locale=gl_ES"><i class="fab fa-2x fa-facebook-f"></i></a>
                     <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-linkedin-in"></i></a>
                     <a class="text-white" href="#"><i class="fab fa-2x fa-instagram"></i></a>
                 </div>
             </div>
             <div class="col-md-4 mb-5">
-                <h3 class="text-white mb-4">Our Courses</h3>
+                <h3 class="text-white mb-4">Our Links</h3>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Web Design</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Apps Design</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Marketing</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Research</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>SEO</a>
+                    <a class="text-white-50 mb-2" href="{{ route('/') }}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white-50 mb-2" href="{{ url('user/all/subjects') }}"><i class="fa fa-angle-right mr-2"></i>Subjects</a>
+                    <a class="text-white-50 mb-2" href="{{ url('user/all/posts') }}"><i class="fa fa-angle-right mr-2"></i>Posts</a>
+                    <a class="text-white-50 mb-2" href="{{ url('user/contact') }}"><i class="fa fa-angle-right mr-2"></i>Contact</a>
                 </div>
             </div>
             <div class="col-md-4 mb-5">
                 <h3 class="text-white mb-4">Quick Links</h3>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>
+                    <a class="text-white-50 mb-2" href="http://www.hti.edu.eg/"><i class="fa fa-angle-right mr-2"></i>HTI Website</a>
                     <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Terms & Condition</a>
                     <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Regular FAQs</a>
                     <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Help & Support</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
                 </div>
             </div>
         </div>
@@ -128,11 +128,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0">Copyright &copy; <a class="text-white" href="#">Your Site Name</a>. All Rights Reserved.
+                <p class="m-0">Copyright &copy; <a class="text-white" href="#">HTi Space</a>. All Rights Reserved.
                 </p>
             </div>
             <div class="col-md-6 text-center text-md-right">
-                <p class="m-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a>
+                <p class="m-0">Designed by <a class="text-white" href="#">Space Team</a>
                 </p>
             </div>
         </div>
