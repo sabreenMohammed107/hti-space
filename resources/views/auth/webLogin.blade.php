@@ -73,14 +73,14 @@
                 <div class="mb-3 text-start">
                     <label for="form1Example1" class="form-label">Email Address</label>
 
-                  <input type="email" name="email" id="form1Example1" class="form-control" />
+                  <input type="email" required name="email" id="form1Example1" class="form-control" />
                 </div>
 
                 <!-- Password input -->
                 <div class="mb-3 text-start">
                     <label for="form1Example2" class="form-label">Password</label>
 
-                  <input type="password" name="password" id="form1Example2" class="form-control" />
+                  <input type="password" required name="password" id="form1Example2" class="form-control" />
                 </div>
 
                 <!-- 2 column grid layout for inline styling -->

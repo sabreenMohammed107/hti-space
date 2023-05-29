@@ -31,7 +31,7 @@
             <div class="slider_section slider_details ">
                 <h1> the best way <br> to plan your future you need us</h1>
                 <p>there are endless posibilities when planning your next <br> step so we are waiting for you to join
-                    champion's</p>
+                    Space</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6">

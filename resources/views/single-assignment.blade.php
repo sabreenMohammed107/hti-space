@@ -64,7 +64,7 @@
                             @if ($solutions[0]->degree_pct) disabled @endif
                             @endisset
                             @if ($assignment->deadline_date < now()->format('Y-m-d'))
-                            disabled
+                            style="display:none"
                             @endif
                              name="attach_image" type="file" onchange="javascript:this.form.submit();" />
                             </form>
