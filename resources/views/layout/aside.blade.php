@@ -6,7 +6,7 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto pt-9 pb-5" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="#">
+        <a href="{{ url('/admin/home') }}">
             <img alt="Logo" src="{{ asset('img/logo.png') }}" class="max-h-50px logo-default "
                 style="height: 120px" />
             <img alt="Logo" src="{{ asset('img/logo.png') }}" class="max-h-50px logo-minimize "
@@ -21,12 +21,15 @@
         <!--begin::Menu-->
         <div class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 my-5 mt-lg-2 mb-lg-0"
             id="kt_aside_menu" data-kt-menu="true">
+
             <div class="menu-fit hover-scroll-y me-lg-n5 pe-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true"
                 data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto"
                 data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="20px"
                 data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer">
+
                 <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
-                    <span class="menu-link">
+                    {{-- <span class="menu-link"> --}}
+                        <a href="{{ url('/admin/home') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -44,9 +47,11 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
+
                         <span class="menu-title">Dashboards</span>
                         <span class="menu-arrow"></span>
-                    </span>
+
+                    </a>
 
                 </div>
 
