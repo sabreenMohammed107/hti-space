@@ -56,16 +56,18 @@
                             <input type="hidden" name="student_id" value="{{ $studId->id }}">
                             <input type="hidden" name="assignment_id" value="{{ $assignment->id }}">
 
-                            <label for="file-upload" class="btn btn-block btn-secondary py-3 px-5" >
+                            <label for="file-upload"
+                            @if ($assignment->deadline_date < now()->format('Y-m-d'))
+                            style="display:none"
+                            @endif class="btn btn-block btn-secondary py-3 px-5" >
                                 Upload Solution
+
                             </label>
                             <input id="file-upload"
                             @isset($solutions[0])
                             @if ($solutions[0]->degree_pct) disabled @endif
                             @endisset
-                            @if ($assignment->deadline_date < now()->format('Y-m-d'))
-                            style="display:none"
-                            @endif
+
                              name="attach_image" type="file" onchange="javascript:this.form.submit();" />
                             </form>
                         </div>

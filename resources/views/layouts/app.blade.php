@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Space') }}</title>
+    <title>HTI Space</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
