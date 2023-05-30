@@ -43,6 +43,7 @@
            success: function( msg ) {
 
             $('#subpage').html(msg);
+            location.reload();
 
            },
         error: function (textStatus, errorThrown) {
@@ -69,6 +70,7 @@ data: form,
 success: function( msg ) {
 
 $('#subpage').html(msg.table_view);
+location.reload();
 if(msg.succes == false)
 {
     alert('Subject has assignments -- can’t cancel registeration')
