@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('web-assets/loginandout/sign-in.css') }}">
     <!-- icon -->
     <link rel="icon" href="{{ asset('web-assets/ico/favicon.png') }}">
-    <title> Sign up </title>
+    <title> HTI Space </title>
 </head>
 
 <body>
