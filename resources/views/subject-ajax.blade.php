@@ -106,18 +106,21 @@
     <div class="mb-5">
         <h2 class="mb-4">My Subject</h2>
         @foreach ($mySubjects as $mySubject)
-            <a class="d-flex align-items-center text-decoration-none mb-4" href="{{ url('user/single-subject/'.$mySubject->subject->id) }}">
-                <img class="img-fluid rounded" style="width:80px;height:80px"
-                    src="{{ asset('uploads/subjects') }}/{{ $mySubject->subject->image ?? 'defult.png' }}"
-                    alt="">
-                <div class="pl-3">
-                    <h6>{{ $mySubject->subject->name ?? '' }}</h6>
-                    <div class="d-flex">
-                        <small class="text-body mr-3"><i
-                                class="fa fa-user text-primary mr-2"></i>{{ $mySubject->subject->professors->last()->user->name ?? '' }}</small>
-                    </div>
+        @isset($mySubject->subject)
+        <a class="d-flex align-items-center text-decoration-none mb-4" href="{{ url('user/single-subject/'.$mySubject->subject->id) }}">
+            <img class="img-fluid rounded" style="width:80px;height:80px"
+                src="{{ asset('uploads/subjects') }}/{{ $mySubject->subject->image ?? 'defult.png' }}"
+                alt="">
+            <div class="pl-3">
+                <h6>{{ $mySubject->subject->name ?? '' }}</h6>
+                <div class="d-flex">
+                    <small class="text-body mr-3"><i
+                            class="fa fa-user text-primary mr-2"></i>{{ $mySubject->subject->professors->last()->user->name ?? '' }}</small>
                 </div>
-            </a>
+            </div>
+        </a>
+        @endisset
+
         @endforeach
 
 
