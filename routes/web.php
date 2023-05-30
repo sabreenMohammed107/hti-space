@@ -54,6 +54,9 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('user/all/subjects', [MainController::class, 'subjects'])->name('user.all.subjects');
     Route::get('user/all/posts', [MainController::class, 'posts'])->name('user.all.posts');
     Route::get('user/add/comment',[MainController::class,'addComment'] )->name('add.comment');
+
+    Route::get('user/add/subject/comment',[MainController::class,'addCommentSubject'] )->name(' add.subject.comment');
+
     Route::get('user/enroll/now',[MainController::class,'enrollNow'] )->name('enroll.now');
     Route::get('user/cancel/registeration',[MainController::class,'cancelRegisteration'] )->name('cancel.registeration');
     Route::get('user/single-subject/{id}',[MainController::class, 'singleSubject'])->name('single-subject');

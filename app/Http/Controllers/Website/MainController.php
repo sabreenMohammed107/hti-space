@@ -83,6 +83,24 @@ class MainController extends Controller
         return view('singlePost-ajax', get_defined_vars())->render();
 
     }
+    public function addCommentSubject(Request $request)
+    {
+        $comment = new Comment();
+        $comment->comment = $request->get('comment_text');
+        $comment->post_id = $request->get('post_id');
+        $comment->comment_date = Carbon::now();
+        $comment->student_id = Student::where('user_id', $request->get('user_id'))->first()->id;
+        $comment->save();
+
+        $studLogin = Auth::user()->id;
+        $studId = Student::where('user_id', $studLogin)->first();
+        $ids = Student_subject::where('student_id', $studId->id)->pluck('subject_id');
+        $blogs = Post::whereIn('subject_id', $ids)->orderBy("created_at", "Desc")->get();
+        // $blogs=Post::all();
+        $professors = Professor::all();
+        return view('singlePostSubject-ajax', get_defined_vars())->render();
+
+    }
 
     public function enrollNow(Request $request)
     {

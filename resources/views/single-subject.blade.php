@@ -64,6 +64,7 @@
                         <div class="section-title position-relative mb-5">
                             <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Subject Detail
                             </h6>
+                            <input type="hidden" name="subject_id" id="subject_id" value="{{  $subject->id }}">
                             <h1 class="display-4">{{  $subject->name }}</h1>
                         </div>
                         <img class="img-fluid rounded w-100 mb-4" style="height: 350px" src="{{ asset('uploads/subjects') }}/{{ $subject->image ?? 'defult.png' }}" alt="Image">
@@ -245,7 +246,7 @@
                 <h1 class="display-4">Follow the new Posts </h1>
             </div>
             <div id="reComment">
-                @include('singlePost-ajax')
+                @include('singlePostSubject')
             </div>
 
         </div>
@@ -328,14 +329,16 @@ function comments(id) {
             var user_id = $('#user_id' + id).val();
             var comment_text = $('#comment_text' + id).val();
             var post_id = $('#post_id' + id).val();
+            var subject_id = $('#subject_id').val();
 
             $.ajax({
                 type: 'GET',
-                url: "{{ route('add.comment') }}",
+                url: "{{ route('add.subject.comment') }}",
                 data: {
                     user_id: user_id,
                     comment_text: comment_text,
-                    post_id: post_id
+                    post_id: post_id,
+                    subject_id: subject_id
                 },
                 success: function(msg) {
 
