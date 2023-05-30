@@ -62,8 +62,8 @@
                                         src="{{ asset('uploads/students') }}/{{ $comment->student->image ?? 'defult.jpg'  }}" width="40"> {{ $comment->student->user->name ?? '' }}</h5><span
                                         class="dot mb-1"></span><span class="mb-1 ml-2">
                                         {{-- {{ \Carbon\Carbon::parse($comment->comment_date)->diffForHumans() }} --}}
-                                        {{-- {{ $comment->comment_date->diffForHumans() }} --}}
-                                        {{  \Carbon\Carbon::createFromFormat('Y-m-d', $comment->comment_date)->diffForHumans(\Carbon\Carbon::now())}}
+                                        {{Carbon\Carbon::parse($comment->created_at)->diffForHumans(\Carbon\Carbon::now())}}
+                                        {{-- {{  \Carbon\Carbon::createFromFormat('Y-m-d', $comment->comment_date)->diffForHumans(\Carbon\Carbon::now())}} --}}
                                     </span>
                                 </div>
                                 <div class="comment-text-sm"><span>{{ $comment->comment }}</span></div>
