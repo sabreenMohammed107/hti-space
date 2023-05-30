@@ -160,6 +160,60 @@ class MainController extends Controller
         }
     }
 
+    public function enrollNow1(Request $request)
+    {
+        $subject_student = new Student_subject();
+        $subject_student->student_id = $request->get('student_id');
+        $subject_student->subject_id = $request->get('subject_id');
+        $subject_student->save();
+        $professors = Professor::all();
+        $subjects = Professor_subject::paginate(6);
+        $studLogin = Auth::user()->id;
+        $studId = Student::where('user_id', $studLogin)->first();
+        $ids = Student_subject::where('student_id', $request->get('student_id'))->pluck('subject_id');
+        $mySubjects = Student_subject::where('student_id', $request->get('student_id'))->get();
+        $subject = Subject::find($request->get('subject_id'));
+        $blogs = Post::all();
+
+        return view('single-subject', get_defined_vars())->render();
+    }
+
+    public function cancelRegisteration1(Request $request)
+    {
+
+        $subject_student = Student_subject::where('student_id', $request->get('student_id'))->
+            where('subject_id', $request->get('subject_id'))->first();
+
+        $subject_assignments_ids = Subject_assignment::where('subject_id', $request->get('subject_id'))->pluck('id');
+        $solutions = Assignment_solution::whereIn('assignment_id', $subject_assignments_ids)->where('student_id', $request->get('student_id'))->get();
+        $ids = Student_subject::where('student_id', $request->get('student_id'))->pluck('subject_id');
+        $mySubjects = Student_subject::where('student_id', $request->get('student_id'))->get();
+        $studLogin = Auth::user()->id;
+        $studId = Student::where('user_id', $studLogin)->first();
+        $blogs = Post::all();
+        $professors = Professor::all();
+        $subjects = Professor_subject::paginate(6);
+        $subject = Subject::find($request->get('subject_id'));
+        if (count($solutions) > 0) {
+            $table_view = view('subject-ajax', get_defined_vars())->render();
+            return response()->json(['succes' => false, 'table_view' => $table_view]);
+
+        } else {
+
+            $subject_student->delete();
+            $mySubjects = Student_subject::where('student_id', $request->get('student_id'))->get();
+            $studLogin = Auth::user()->id;
+            $studId = Student::where('user_id', $studLogin)->first();
+            $blogs = Post::all();
+            $professors = Professor::all();
+            $subjects = Professor_subject::paginate(6);
+            $table_view = view('single-subject', get_defined_vars())->render();
+
+            return response()->json(['succes' => true, 'table_view' => $table_view]);
+
+        }
+
+    }
     public function singleSubject($id)
     {
         $subject = Subject::find($id);

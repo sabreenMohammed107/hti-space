@@ -61,7 +61,8 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('user/enroll/now',[MainController::class,'enrollNow'] )->name('enroll.now');
     Route::get('user/cancel/registeration',[MainController::class,'cancelRegisteration'] )->name('cancel.registeration');
     Route::get('user/single-subject/{id}',[MainController::class, 'singleSubject'])->name('single-subject');
-
+    Route::get('user/enroll/now1',[MainController::class,'enrollNow1'] )->name('enroll.now1');
+    Route::get('user/cancel/registeration1',[MainController::class,'cancelRegisteration1'] )->name('cancel.registeration1');
     Route::get('user/single-assignment/{id}',[MainController::class, 'singleAssignment'])->name('single-assignment');
     Route::post('user/upload-solution',[MainController::class,'uploadSolution'] )->name('upload-solution');
     Route::get('user/del-solution/{id}',[MainController::class, 'delSolution'])->name('del-solution');
