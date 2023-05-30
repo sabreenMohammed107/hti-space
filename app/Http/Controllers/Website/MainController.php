@@ -98,7 +98,7 @@ class MainController extends Controller
         $blogs = Post::whereIn('subject_id', $ids)->orderBy("created_at", "Desc")->get();
         // $blogs=Post::all();
         $professors = Professor::all();
-        return view('singlePostSubject-ajax', get_defined_vars())->render();
+        return view('singlePostSubject', get_defined_vars())->render();
 
     }
 
