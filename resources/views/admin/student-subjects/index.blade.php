@@ -116,7 +116,7 @@
       class="symbol symbol-50px">
       <span class="symbol-label"
 
-          style="background-image:url({{ asset('uploads/students') }}/{{ $row->student->image }});"></span>
+          style="background-image:url({{ asset('uploads/students') }}/{{ $row->student->image ?? '' }});"></span>
   </a>
   <!--end::Thumbnail-->
                 <div class="ms-5">

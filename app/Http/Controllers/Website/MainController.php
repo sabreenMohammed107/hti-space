@@ -13,12 +13,16 @@ use App\Models\Student;
 use App\Models\Student_subject;
 use App\Models\Subject;
 use App\Models\Subject_assignment;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use File;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 class MainController extends Controller
 {
     //
@@ -242,5 +246,73 @@ public function profile(){
         $mySubjects = Student_subject::where('student_id', $studId->id)->get();
         $stages=Stage::all();
         return view("profile", get_defined_vars());
+}
+
+
+public function updateProfile(Request $request){
+      $input = $request->all();
+      $student = Student::where('id',$request->student_id)->first();
+      $validator = Validator::make($request->all(), [
+
+          'mobile' => ['required', 'min:11', 'max:11', 'regex:/(01)[0-2,5]{1}[0-9]{8}/'],
+        //   'email' => ['required','email','regex:/(.*)hti\.edu\.eg$/i'. $request->user_id ],
+        'email' => 'regex:/(.*)hti\.edu\.eg$/i|required|unique:users,email,' . $request->user_id,
+          'name' => 'required',
+
+      ], [
+
+          'mobile.required' => 'phone_required',
+
+          'name.required' => 'name_required',
+
+          'email.required' => 'email_required',
+          'email.unique' => 'email.unique',
+
+      ]);
+      if ($validator->fails()) {
+
+          return redirect()->back()->withInput()
+              ->withErrors($validator->messages());
+
+      }
+
+    DB::beginTransaction();
+    try {
+        // Disable foreign key checks!
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $user = User::find($request->user_id)->update([
+            'name' => $input['name'],
+            'email' => $input['email'],
+
+        ]);
+        if ($request->hasFile('password')) {
+           User::find($request->user_id)->update([
+
+                'password' => Hash::make($input['password']),
+            ]);
+        }
+        $student = Student::where('id',$request->student_id)->first();
+        if ($request->hasFile('image')) {
+            $attach_image = $request->file('image');
+
+            $student->image = $this->UplaodImage($attach_image);
+        }
+        $student->mobile = $request->mobile;
+        $student->stage_id = $request->stage_id;
+        $student->save();
+        DB::commit();
+        // Enable foreign key checks!
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+
+            return redirect()->back()->with('repo', "data update");
+
+
+    } catch (\Throwable $e) {
+        // throw $th;
+        DB::rollback();
+        return redirect()->back()->withInput()->withErrors($e->getMessage());
+        // return redirect()->back()->withInput()->withErrors('حدث خطأ فى ادخال البيانات قم بمراجعتها مرة اخرى');
+    }
 }
 }

@@ -11,8 +11,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -25,7 +25,7 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
 
     use AuthenticatesUsers;
 
@@ -54,7 +54,7 @@ class LoginController extends Controller
         //     'email' => 'required|email',
         //     'password' => 'required',
         // ]);
-        $validator =  Validator::make($input, [
+        $validator = Validator::make($input, [
 
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -65,24 +65,20 @@ class LoginController extends Controller
                 ->withErrors($validator->messages());
 
         }
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
             if (auth()->user()->type == 'admin') {
                 return redirect()->route('admin.home');
-            }else if (auth()->user()->type == 'prof') {
+            } else if (auth()->user()->type == 'prof') {
                 return redirect()->route('prof.home');
-            }
-
-
-            else{
+            } else {
                 return redirect()->route('login');
             }
-        }else{
+        } else {
             // return "ff";
             // return redirect()->route('login')->withInput()
             // ->withErrors('Email-Address And Password Are Wrong.');
             return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+                ->with('error', 'Email-Address And Password Are Wrong.');
         }
 
     }
@@ -96,81 +92,79 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
             if (auth()->user()->type == 'user') {
                 return redirect()->to('/');
 
-            }else{
+            } else {
                 Auth::guard('web')->logout();
                 $request->session()->invalidate();
-                return redirect('/web-login')->withErrors('error','Email-Address And Password Are Wrong.');
+                return redirect('/web-login')->withErrors('error', 'Email-Address And Password Are Wrong.');
             }
-        }else{
+        } else {
             return redirect('/web-login')->with('msg', 'Email-Address And Password Are Wrong.');
         }
     }
 
-public function saveRegister(Request $request){
-    $input = $request->all();
-
-    $this->validate($request, [
-        'email' => 'required|unique:users|email|regex:/(.*)hti\.edu\.eg$/i',
-        'password' => 'required|min:8|confirmed',
-        'name' => 'required',
-    ],
-[
-    'email.regex'=>'email must be example@hti.edu.eg'
-]);
-    DB::beginTransaction();
-    try {
-        // Disable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-   $user= User::create([
-        'name' => $input['name'],
-        'email' => $input['email'],
-        'type' => 0,
-        'password' => Hash::make($input['password']),
-    ]);
-    $student = new Student();
-    $student->user_id = $user->id;
-    if ($request->hasFile('image')) {
-        $attach_image = $request->file('image');
-
-        $student->image = $this->UplaodImage($attach_image);
-    }
-    $student->mobile = $request->mobile;
-    $student->stage_id = $request->stage_id;
-    $student->save();
-
-    DB::commit();
-    // Enable foreign key checks!
-    DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-    if(auth()->attempt(array('email' => $input['email'], 'password' =>$input['password'])))
+    public function saveRegister(Request $request)
     {
-        if (auth()->user()->type == 'user') {
+        $input = $request->all();
 
-             return redirect()->to('/');
+        $this->validate($request, [
+            'email' => 'required|unique:users|email|regex:/(.*)hti\.edu\.eg$/i',
+            'password' => 'required|min:8|confirmed',
+            'name' => 'required',
+        ],
+            [
+                'email.regex' => 'email must be example@hti.edu.eg',
+            ]);
+        DB::beginTransaction();
+        try {
+            // Disable foreign key checks!
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            $user = User::create([
+                'name' => $input['name'],
+                'email' => $input['email'],
+                'type' => 0,
+                'password' => Hash::make($input['password']),
+            ]);
+            $student = new Student();
+            $student->user_id = $user->id;
+            if ($request->hasFile('image')) {
+                $attach_image = $request->file('image');
 
-        }else{
+                $student->image = $this->UplaodImage($attach_image);
+            }
+            $student->mobile = $request->mobile;
+            $student->stage_id = $request->stage_id;
+            $student->save();
 
-            Auth::guard('web')->logout();
-            $request->session()->invalidate();
-             return redirect()->route(('web.login'))->withErrors('error','Email-Address And Password Are Wrong.');
+            DB::commit();
+            // Enable foreign key checks!
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+            if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+                if (auth()->user()->type == 'user') {
+
+                    return redirect()->to('/');
+
+                } else {
+
+                    Auth::guard('web')->logout();
+                    $request->session()->invalidate();
+                    return redirect()->route(('web.login'))->withErrors('error', 'Email-Address And Password Are Wrong.');
+                }
+            } else {
+
+                return redirect()->back()->with('msg', 'Email-Address And Password Are Wrong.');
+            }
+
+        } catch (\Throwable $e) {
+            // throw $th;
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors($e->getMessage());
+            // return redirect()->back()->withInput()->withErrors('حدث خطأ فى ادخال البيانات قم بمراجعتها مرة اخرى');
         }
-    }else{
-
-     return redirect()->back()->with('msg', 'Email-Address And Password Are Wrong.');
     }
-
-} catch (\Throwable $e) {
-    // throw $th;
-    DB::rollback();
-    return redirect()->back()->withInput()->withErrors($e->getMessage());
-    // return redirect()->back()->withInput()->withErrors('حدث خطأ فى ادخال البيانات قم بمراجعتها مرة اخرى');
-}
-}
-
 
     public function logout(Request $request)
     {
@@ -188,15 +182,13 @@ public function saveRegister(Request $request){
 
             // return redirect('manager.home');
             return redirect()->route('prof.home');
-        }
-        else if (auth()->user()->type == 'user') {
+        } else if (auth()->user()->type == 'user') {
             Auth::guard('web')->logout();
 
             $request->session()->invalidate();
 
             return redirect()->route('/');
-        }
-         else {
+        } else {
 
             return redirect('/web-login');
         }
@@ -215,13 +207,15 @@ public function saveRegister(Request $request){
     }
 
     //site login
-    public function webLogin(){
+    public function webLogin()
+    {
         return view('auth.webLogin');
     }
 
-    public function webRegister(){
-        $stages=Stage::all();
-        return view('auth.webRegister',compact('stages'));
+    public function webRegister()
+    {
+        $stages = Stage::all();
+        return view('auth.webRegister', compact('stages'));
     }
 
     public function UplaodImage($file_request)

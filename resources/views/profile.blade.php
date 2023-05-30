@@ -63,9 +63,20 @@
                                 </ul>
                             </div>
                         @endif
+                        @if (\Session::has('repo'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+
+                            <ul class="p-0 m-0" style="list-style: none;">
+                                <li>{!! \Session::get('repo') !!}</li>
+
+                            </ul>
+                        </div>
+                    @endif
                         <form method="POST" class="bg-white rounded shadow-5-strong p-5" enctype="multipart/form-data"
-                            action="{{ route('save-register') }}">
+                            action="{{ route('updateProfile') }}">
                             @csrf
+                            <input type="hidden" name="student_id" value="{{$studId->id  }}">
+                            <input type="hidden" name="user_id" value="{{$studId->user->id  }}">
                             <!-- Email input -->
                             <div class="row mb-3">
                                 <label for="form1Example3" class="col-md-3 col-form-label text-md-start">User Name</label>
@@ -99,7 +110,7 @@
                                         <option value=""></option>
                                         @foreach ($stages as $stage)
                                             <option value="{{ $stage->id }}"
-                                                {{$studId->stage_id== $stage->id ? 'selected' : '' }}>{{ $stage->name ?? '' }}
+                                                {{$studId->stage_id == $stage->id ? 'selected' : '' }}>{{ $stage->name ?? '' }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -132,7 +143,7 @@
 
                                 <div class="col-md-8">
                                     <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password">
+                                        name="password_confirmation"  autocomplete="new-password">
                                 </div>
                             </div>
                             <!-- 2 column grid layout for inline styling -->
