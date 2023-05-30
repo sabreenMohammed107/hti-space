@@ -95,7 +95,7 @@ class MainController extends Controller
         $studLogin = Auth::user()->id;
         $studId = Student::where('user_id', $studLogin)->first();
         $ids = Student_subject::where('student_id', $studId->id)->pluck('subject_id');
-        $blogs = Post::whereIn('subject_id', $request->get('subject_id'))->orderBy("created_at", "Desc")->get();
+        $blogs = Post::where('subject_id', $request->get('subject_id'))->orderBy("created_at", "Desc")->get();
         // $blogs=Post::all();
         $professors = Professor::all();
         return view('singlePostSubject', get_defined_vars())->render();
