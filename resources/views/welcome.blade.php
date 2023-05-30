@@ -61,7 +61,7 @@
                 <div class="col-lg-7 my-5 pt-5 pb-lg-5">
                     <div class="section-title position-relative mb-4">
                         <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Why Choose Us?</h6>
-                        <h1 class="display-4">Why You Should Start Learning with Us?</h1>
+                        <h1 class="display-4">HTI -SPACE features</h1>
                     </div>
                     <p class="mb-4 pb-2">Aliquyam accusam clita nonumy ipsum sit sea clita ipsum clita, ipsum dolores amet voluptua duo dolores et sit ipsum rebum, sadipscing et erat eirmod diam kasd labore clita est. Diam sanctus gubergren sit rebum clita amet.</p>
                     <div class="d-flex mb-3">
@@ -69,8 +69,9 @@
                             <i class="fa fa-2x fa-graduation-cap text-white"></i>
                         </div>
                         <div class="mt-n1">
-                            <h4>Skilled Instructors</h4>
-                            <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                            <h4>Easy Access to Course Materials: </h4>
+                            <p>Instantly access lecture notes, presentations, and study resources in one place.
+                            </p>
                         </div>
                     </div>
                     <div class="d-flex mb-3">
@@ -78,8 +79,8 @@
                             <i class="fa fa-2x fa-certificate text-white"></i>
                         </div>
                         <div class="mt-n1">
-                            <h4>International Certificate</h4>
-                            <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                            <h4>Hassle-free Assignment Management:</h4>
+                            <p> Submit assignments, receive notifications, and access grades seamlessly.</p>
                         </div>
                     </div>
                     <div class="d-flex">
@@ -87,8 +88,8 @@
                             <i class="fa fa-2x fa-book-reader text-white"></i>
                         </div>
                         <div class="mt-n1">
-                            <h4>Online Classes</h4>
-                            <p class="m-0">Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                            <h4>Seamless Communication and Collaboration: </h4>
+                            <p class="m-0">Engage in discussions, ask questions, and receive feedback for a dynamic learning experience.</p>
                         </div>
                     </div>
                 </div>
