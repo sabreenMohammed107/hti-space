@@ -45,8 +45,8 @@
                                 ?>
                                 @if (isset($indexed[$subject->subject->id]))
 
-                                    <Form method="post" id="cancelling{{ $index }}" action="{{url('user/cancel/registeration')}}">
-                                        @csrf
+                                    <Form method="get" id="cancelling{{ $index }}" action="{{url('user/cancel/registeration')}}">
+
                                         <input type="hidden" name="student_id" value="{{ $studId->id }}" >
                                         <input type="hidden" name="subject_id" value="{{ $subject->subject->id }}" >
                                         <button type="submit"onclick="cancelling({{ $index }})" class="btn btn-block btn-secondary py-3 px-5">Cancel
@@ -56,8 +56,8 @@
 
                                 @else
 
-                                        <Form method="post" id="enroll{{ $index }}" action="{{url('user/enroll/now')}}">
-                                            @csrf
+                                        <Form method="get" id="enroll{{ $index }}" action="{{url('user/enroll/now')}}">
+
                                             <input type="hidden" name="student_id" value="{{ $studId->id }}" >
                                             <input type="hidden" name="subject_id" value="{{ $subject->subject->id }}" >
                                             <button type="submit" onclick="enroll({{ $index }})" class="btn btn-block btn-secondary py-3 px-5">Enroll

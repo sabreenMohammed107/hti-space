@@ -54,14 +54,16 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('user/all/subjects', [MainController::class, 'subjects'])->name('user.all.subjects');
     Route::get('user/all/posts', [MainController::class, 'posts'])->name('user.all.posts');
     Route::get('user/add/comment',[MainController::class,'addComment'] )->name('add.comment');
-    Route::post('user/enroll/now',[MainController::class,'enrollNow'] )->name('enroll.now');
-    Route::post('user/cancel/registeration',[MainController::class,'cancelRegisteration'] )->name('cancel.registeration');
+    Route::get('user/enroll/now',[MainController::class,'enrollNow'] )->name('enroll.now');
+    Route::get('user/cancel/registeration',[MainController::class,'cancelRegisteration'] )->name('cancel.registeration');
     Route::get('user/single-subject/{id}',[MainController::class, 'singleSubject'])->name('single-subject');
 
     Route::get('user/single-assignment/{id}',[MainController::class, 'singleAssignment'])->name('single-assignment');
     Route::post('user/upload-solution',[MainController::class,'uploadSolution'] )->name('upload-solution');
     Route::get('user/del-solution/{id}',[MainController::class, 'delSolution'])->name('del-solution');
     Route::get('user/contact', [MainController::class, 'contact'])->name('user.contact');
+
+    Route::get('user/profile', [MainController::class, 'profile'])->name('user.profile');
 
 });
 

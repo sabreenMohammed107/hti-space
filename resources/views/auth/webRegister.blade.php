@@ -37,118 +37,125 @@
         <div class="col-sm-12 col-md-6">
             <div class=" slider_details side_right_details">
                 <div class="mb-5">
-                    <img style="width:150px !important;height:150px !important"
-                        src="{{ asset('img/logo.png') }}" alt="" srcset="">
+                    <img style="width:150px !important;height:150px !important" src="{{ asset('img/logo.png') }}"
+                        alt="" srcset="">
                     <h5 class="text-center">Sign up Now</h5>
                     <a href="{{ route('web-login') }}"> {{ __('Have An Acount ?') }} </a>
 
                 </div>
-                @if(count($errors) > 0 )
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
 
-                  <ul class="p-0 m-0" style="list-style: none;">
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                  </ul>
-                </div>
+                        <ul class="p-0 m-0" style="list-style: none;">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
                 @if (\Session::has('msg'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
 
-                  <ul class="p-0 m-0" style="list-style: none;">
-                    <li>{!! \Session::get('msg') !!}</li>
+                        <ul class="p-0 m-0" style="list-style: none;">
+                            <li>{!! \Session::get('msg') !!}</li>
 
-                  </ul>
-                </div>
-                @endif
-                <form method="POST" class="bg-white rounded shadow-5-strong p-5" enctype="multipart/form-data" action="{{ route('save-register') }}">
-                    @csrf
-  <!-- Email input -->
-  <div class="row mb-3">
-    <label for="form1Example3" class="col-md-3 col-form-label text-md-start">User Name</label>
-    <div class="col-md-8">
-  <input type="text" name="name" value="{{ old('name') }}" id="form1Example3" class="form-control" />
-</div></div>
-                <!-- Email input -->
-                <div class="row mb-3">
-                    <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Email Address</label>
-                    <div class="col-md-8">
-                  <input type="email" value="{{ old('email') }}" name="email" id="form1Example1" class="form-control" />
-                </div>
-                </div>
-                <!-- Email input -->
-                <div class="row mb-3">
-                    <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Mobile</label>
-                    <div class="col-md-8">
-                  <input type="text" value="{{ old('mobile') }}" name="mobile" id="form1Example1" class="form-control" />
-                </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Stage</label>
-                    <div class="col-md-8">
-                        <select required class="form-select form-select-solid dynamic"
-                        data-control="select2" data-placeholder="Select an option" required
-                        data-show-subtext="true" name="stage_id" data-live-search="true" id="country"
-                        data-dependent="sub">
-                        <option value=""></option>
-                        @foreach ($stages as $stage)
-                            <option value="{{ $stage->id }}" {{ old('stage_id') == $stage->id ? "selected" :""}} >{{ $stage->name ?? '' }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-                </div>
-
-                  <!-- Email input -->
-                  <div class="row mb-3">
-                    <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Image</label>
-                    <div class="col-md-8">
-                  <input type="file"  name="image" id="form1Example1" class="form-control" />
-                </div>
-                </div>
-                <!-- Password input -->
-                <div class="row mb-3">
-                    <label for="form1Example2" class="col-md-3 col-form-label text-md-start">Password</label>
-                    <div class="col-md-8">
-                  <input type="password" name="password" id="form1Example2" class="form-control" />
-                </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="password-confirm" class="col-md-3 col-form-label text-md-start">{{ __('Confirm Password') }}</label>
-
-                    <div class="col-md-8">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        </ul>
                     </div>
-                </div>
-                <!-- 2 column grid layout for inline styling -->
-                <div class="row mb-4">
-                  <div class="col d-flex justify-content-center">
-                    <!-- Checkbox -->
-                    {{-- <div class="form-check">
+                @endif
+                <form method="POST" class="bg-white rounded shadow-5-strong p-5" enctype="multipart/form-data"
+                    action="{{ route('save-register') }}">
+                    @csrf
+                    <!-- Email input -->
+                    <div class="row mb-3">
+                        <label for="form1Example3" class="col-md-3 col-form-label text-md-start">User Name</label>
+                        <div class="col-md-8">
+                            <input type="text" name="name" value="{{ old('name') }}" id="form1Example3"
+                                class="form-control" />
+                        </div>
+                    </div>
+                    <!-- Email input -->
+                    <div class="row mb-3">
+                        <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Email Address</label>
+                        <div class="col-md-8">
+                            <input type="email" value="{{ old('email') }}" name="email" id="form1Example1"
+                                class="form-control" />
+                        </div>
+                    </div>
+                    <!-- Email input -->
+                    <div class="row mb-3">
+                        <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Mobile</label>
+                        <div class="col-md-8">
+                            <input type="text" value="{{ old('mobile') }}" name="mobile" id="form1Example1"
+                                class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Stage</label>
+                        <div class="col-md-8">
+                            <select required class="form-select form-select-solid dynamic" data-control="select2"
+                                data-placeholder="Select an option" required data-show-subtext="true" name="stage_id"
+                                data-live-search="true" id="country" data-dependent="sub">
+                                <option value=""></option>
+                                @foreach ($stages as $stage)
+                                    <option value="{{ $stage->id }}"
+                                        {{ old('stage_id') == $stage->id ? 'selected' : '' }}>{{ $stage->name ?? '' }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="row mb-3">
+                        <label for="form1Example1" class="col-md-3 col-form-label text-md-start">Image</label>
+                        <div class="col-md-8">
+                            <input type="file" name="image" id="form1Example1" class="form-control" />
+                        </div>
+                    </div>
+                    <!-- Password input -->
+                    <div class="row mb-3">
+                        <label for="form1Example2" class="col-md-3 col-form-label text-md-start">Password</label>
+                        <div class="col-md-8">
+                            <input type="password" name="password" id="form1Example2" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="password-confirm"
+                            class="col-md-3 col-form-label text-md-start">{{ __('Confirm Password') }}</label>
+
+                        <div class="col-md-8">
+                            <input id="password-confirm" type="password" class="form-control"
+                                name="password_confirmation" required autocomplete="new-password">
+                        </div>
+                    </div>
+                    <!-- 2 column grid layout for inline styling -->
+                    <div class="row mb-4">
+                        <div class="col d-flex justify-content-center">
+                            <!-- Checkbox -->
+                            {{-- <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
                       <label class="form-check-label" for="form1Example3">
                         Remember me
                       </label>
                     </div> --}}
-                  </div>
+                        </div>
 
-                  {{-- <div class="col text-center">
+                        {{-- <div class="col text-center">
                     <!-- Simple link -->
                     <a href="#!">Forgot password?</a>
                   </div> --}}
-                </div>
+                    </div>
 
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-              </form>
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                </form>
             </div>
         </div>
     </div>
 
 
-  <!--Footer-->
-  <!-- javascripts links -->
+    <!--Footer-->
+    <!-- javascripts links -->
     <!-- bootstrap 5.0v scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">

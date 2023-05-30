@@ -37,7 +37,7 @@
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
-        type:'POST',
+        type:'GET',
            url: "{{url('user/enroll/now')}}",
            data: form,
            success: function( msg ) {
@@ -63,7 +63,7 @@ $.ajax({
     headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
-          type:'POST',
+          type:'GET',
 url: "{{url('user/cancel/registeration')}}",
 data: form,
 success: function( msg ) {

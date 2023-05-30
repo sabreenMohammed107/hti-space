@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Professor;
 use App\Models\Professor_subject;
+use App\Models\Stage;
 use App\Models\Student;
 use App\Models\Student_subject;
 use App\Models\Subject;
@@ -215,5 +216,13 @@ try {
    return redirect()->back()->withInput()->with('flash_danger', 'Can’t delete This Row
    Because it related with another table');
 }
+}
+
+public function profile(){
+    $studLogin = Auth::user()->id;
+        $studId = Student::where('user_id', $studLogin)->first();
+        $mySubjects = Student_subject::where('student_id', $studId->id)->get();
+        $stages=Stage::all();
+        return view("profile", get_defined_vars());
 }
 }

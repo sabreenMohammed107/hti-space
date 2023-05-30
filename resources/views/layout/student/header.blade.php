@@ -60,7 +60,7 @@
                     </div>
                 </div> --}}
                 <a href="{{ url('user/contact') }}" class="nav-item nav-link">Contact</a>
-                <a href="#" class="nav-item nav-link active">{{Auth::user()->name}}</a>
+                <a href="{{ url('user/profile') }}" class="nav-item nav-link active">{{Auth::user()->name}}</a>
 
 
             </div>
