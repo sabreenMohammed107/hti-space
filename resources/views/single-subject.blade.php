@@ -321,7 +321,7 @@ function comments(id) {
             }
         }
         // $(document).ready(function() {
-        function commentsSubmit(id) {
+        function commentsSubmitSub(id) {
 
             $(this).closest("form").submit();
             event.preventDefault();
