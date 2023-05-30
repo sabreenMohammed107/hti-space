@@ -17,9 +17,9 @@
                 <div class="col-lg-7">
                     <div class="section-title position-relative mb-4">
                         <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">About Us</h6>
-                        <h1 class="display-4">First Choice For Online Education Anywhere</h1>
+                        <h1 class="display-4">Welcome to HTI-SPACE</h1>
                     </div>
-                    <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+                    <p>Welcome to HTI-SPACE, a leading provider of innovative solutions for education management. With a deep understanding of the challenges faced by educational institutions, we have developed a comprehensive web-based platform that revolutionizes the way schools and colleges operate. Our mission is to empower educators, administrators, and students alike by offering intuitive tools and streamlined processes. By harnessing the power of technology, we aim to enhance accessibility, improve communication, and foster collaboration within the educational ecosystem. Join us on this transformative journey as we pave the way for a more efficient and engaging educational experience.</p>
                     <div class="row pt-3 mx-0">
                         <div class="col-3 px-0">
                             <div class="bg-success text-center p-4">
