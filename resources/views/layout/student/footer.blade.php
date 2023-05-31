@@ -39,7 +39,7 @@
                     <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Need Help?</h6>
                     <h1 class="display-4">Send Us A Message</h1>
                 </div>
-                <div class="contact-form">
+                <div class="contact-form" id="contactform">
                     <form>
                         <div class="row">
                             <div class="col-6 form-group">
@@ -56,7 +56,14 @@
                             <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Message" required="required"></textarea>
                         </div>
                         <div>
-                            <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                            <button class="btn btn-primary py-3 px-5" type="submit" >Send Message</button>
+                        </div>
+                        <div id="panel" class="alert alert-success alert-dismissible fade show mt-2" style="display: none" role="alert">
+
+                            <ul class="p-0 m-0" style="list-style: none;">
+                                <li>Save data !</li>
+
+                            </ul>
                         </div>
                     </form>
                 </div>

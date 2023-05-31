@@ -12,6 +12,17 @@
 
  <!-- Template Javascript -->
  <script src="{{asset('web-assets/js/main.js')}}"></script>
+ <script>
+    $(document).ready(function() {
+  $('#contactform').on('submit', function(e){
+
+      e.preventDefault();
+      document.getElementById("panel").style.display = "block";
+
+  });
+});
+
+    </script>
  @yield('scripts')
 </body>
 

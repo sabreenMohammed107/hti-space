@@ -25,5 +25,20 @@
     <link href="{{asset('web-assets/css/style.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
+<style>
+    .successfully-saved {
+  display: none;
+  color: #1b7c18;
+  border-radius: 5px;
+  border: 2px solid #1b7c18;
+  padding: 0.5em 0.75em;
+  background: #d6f8dd;
+  width: 25%;
+  margin-top: 20px;
+    }
+    .successfully-saved .show {
+    display: block;
+  }
+</style>
 @yield('add-style')
 <body>
